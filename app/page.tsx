@@ -194,7 +194,6 @@ export default function LandingPage() {
           <div className="flex gap-8 text-sm font-medium text-slate-500">
             <Link href="/solutions" className="hover:text-primary transition-colors">Solutions</Link>
             <Link href="/how-it-works" className="hover:text-primary transition-colors">How It Works</Link>
-            <Link href="/architecture" className="hover:text-primary transition-colors">Developers</Link>
           </div>
 
           <div className="text-sm text-slate-400">
