@@ -3,6 +3,7 @@
 import { motion, Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronRight, PlayCircle } from 'lucide-react';
+import { BentoGrid } from './BentoGrid';
 
 export const Hero = () => {
     const container: Variants = {
@@ -76,88 +77,8 @@ export const Hero = () => {
                     </Button>
                 </motion.div>
 
-                {/* Dashboard Mockup - Finta Style (Clean White Card) */}
-                <motion.div
-                    initial={{ opacity: 0, y: 100 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative w-full max-w-6xl mx-auto"
-                >
-                    <div className="rounded-t-2xl border border-border/50 bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] overflow-hidden">
-                        {/* Fake Browser Header / App Header */}
-                        <div className="h-12 border-b border-border/50 bg-white flex items-center px-4 gap-4">
-                            <div className="flex gap-2">
-                                <div className="w-3 h-3 rounded-full bg-red-100" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-100" />
-                                <div className="w-3 h-3 rounded-full bg-green-100" />
-                            </div>
-                            <div className="h-6 w-32 bg-gray-50 rounded-md" />
-                        </div>
-
-                        {/* App Content */}
-                        <div className="flex h-[500px] md:h-[600px] bg-[#FAFAFA]">
-                            {/* Sidebar */}
-                            <div className="w-16 md:w-64 border-r border-border/50 bg-white p-4 hidden md:flex flex-col gap-6">
-                                <div className="flex items-center gap-2 mb-4">
-                                    <div className="w-6 h-6 bg-primary rounded-md" />
-                                    <span className="font-bold text-sm">RealtyGenie</span>
-                                </div>
-                                <div className="space-y-1">
-                                    {['Dashboard', 'Inbox', 'Properties', 'Clients', 'Reports'].map((item, i) => (
-                                        <div key={item} className={`px-3 py-2 rounded-md text-sm font-medium flex items-center gap-3 ${i === 0 ? 'bg-primary/5 text-primary' : 'text-muted-foreground hover:bg-gray-50'}`}>
-                                            <div className={`w-4 h-4 rounded ${i === 0 ? 'bg-primary/20' : 'bg-gray-200'}`} />
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Main Area */}
-                            <div className="flex-1 p-6 md:p-10 overflow-hidden">
-                                <div className="mb-8">
-                                    <h3 className="text-xl font-bold mb-6">Dashboard</h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                                        {[
-                                            { label: 'Active Leads', val: '142', change: '+12%', color: 'text-green-600' },
-                                            { label: 'Pending Deals', val: '8', change: '2 closing soon', color: 'text-primary' },
-                                            { label: 'Commission (YTD)', val: '$124k', change: '+8% vs last yr', color: 'text-green-600' },
-                                            { label: 'Tasks', val: '12', change: '4 urgent', color: 'text-orange-500' },
-                                        ].map((stat, i) => (
-                                            <div key={i} className="bg-white p-4 rounded-xl border border-border/50 shadow-sm">
-                                                <p className="text-xs text-muted-foreground font-medium mb-1">{stat.label}</p>
-                                                <p className="text-2xl font-bold mb-2">{stat.val}</p>
-                                                <div className={`text-xs font-medium ${stat.color} bg-opacity-10 rounded-full inline-block`}>
-                                                    {stat.change}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Table Mockup */}
-                                <div className="bg-white rounded-xl border border-border/50 shadow-sm h-full p-4 overflow-hidden">
-                                    <div className="flex items-center justify-between mb-4">
-                                        <h4 className="font-semibold text-sm">Recent Inquiries</h4>
-                                        <div className="w-8 h-8 rounded-full bg-gray-50" />
-                                    </div>
-                                    <div className="space-y-3">
-                                        {[1, 2, 3, 4, 5].map((row) => (
-                                            <div key={row} className="flex items-center justify-between py-3 border-b border-border/30 last:border-0">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-8 h-8 rounded-full bg-primary/10" />
-                                                    <div className="w-32 h-3 bg-gray-100 rounded" />
-                                                </div>
-                                                <div className="w-24 h-3 bg-gray-50 rounded hidden sm:block" />
-                                                <div className="w-16 h-6 rounded-full bg-green-50 text-green-700 text-[10px] flex items-center justify-center font-medium">New Lead</div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
+                {/* Bento Grid Features */}
+                <BentoGrid />
             </div>
         </section>
     );
