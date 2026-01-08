@@ -8,26 +8,26 @@ export const IdxResults = () => {
         {
             title: "Page-1 Rankings",
             description: "Strong push toward Page-1 rankings in ~6–12 months for your highest-intent local searches.",
-            icon: <TrendingUp className="w-6 h-6 text-emerald-600" />,
-            bgColor: "bg-emerald-50"
+            icon: <TrendingUp className="w-6 h-6 text-white" />,
+            bgColor: "bg-emerald-600"
         },
         {
             title: "AI Visibility",
             description: "Increased visibility inside AI-generated answers, not just standard blue search links.",
-            icon: <MousePointer2 className="w-6 h-6 text-blue-600" />,
-            bgColor: "bg-blue-50"
+            icon: <MousePointer2 className="w-6 h-6 text-white" />,
+            bgColor: "bg-blue-600"
         },
         {
             title: "Organic Inquiries",
             description: "More organic inquiries and booked appointments without needing extra monthly ad spend.",
-            icon: <Users className="w-6 h-6 text-purple-600" />,
-            bgColor: "bg-purple-50"
+            icon: <Users className="w-6 h-6 text-white" />,
+            bgColor: "bg-purple-600"
         },
         {
             title: "Zero Missed Leads",
             description: "Fewer missed leads thanks to always-on AI chat and integrated calendar booking.",
-            icon: <Clock className="w-6 h-6 text-orange-600" />,
-            bgColor: "bg-orange-50"
+            icon: <Clock className="w-6 h-6 text-white" />,
+            bgColor: "bg-orange-600"
         }
     ];
 

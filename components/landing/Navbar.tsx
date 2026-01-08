@@ -16,8 +16,8 @@ export const Navbar = () => {
             href: '#',
             dropdown: [
                 { name: 'IDX Website & SEO', href: '/solutions/idx-website' },
-                { name: 'AI Lead Management', href: '/solutions/lead-management' },
                 { name: 'AI Calling Assistant', href: '/solutions/calling-assistant' },
+                { name: 'AI Lead Management', href: '/solutions/lead-management' },
             ]
         },
         {

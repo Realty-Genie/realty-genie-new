@@ -106,9 +106,6 @@ export const SeoGeoAnimation = () => {
                     >
                         {/* AI Head */}
                         <div className="flex items-center gap-3 mb-8 border-b border-slate-800 pb-6">
-                            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-                                <Sparkles className="w-6 h-6 text-emerald-400" />
-                            </div>
                             <div>
                                 <div className="text-sm text-emerald-400 font-mono font-bold tracking-widest uppercase">AI Engine Optimized</div>
                                 <div className="text-xs text-slate-400">Generative Discovery Active</div>

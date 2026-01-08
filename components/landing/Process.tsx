@@ -9,25 +9,25 @@ const steps = [
         title: "Diagnose",
         description: "We review your current leads, website, and workflows to spot where time and money are being wasted.",
         icon: Search,
-        color: "bg-blue-500/10 text-blue-600 border-blue-200"
+        color: "bg-blue-600 text-white border-blue-200"
     },
     {
         title: "Design",
         description: "We pick and shape the right mix of AI tools (website, leads, calls, content, reporting) for your business.",
         icon: PenTool,
-        color: "bg-purple-500/10 text-purple-600 border-purple-200"
+        color: "bg-purple-600 text-white border-purple-200"
     },
     {
         title: "Deploy",
         description: "We connect to your existing systems, switch on automation, and keep your day-to-day running smoothly.",
         icon: Rocket,
-        color: "bg-emerald-500/10 text-emerald-600 border-emerald-200"
+        color: "bg-emerald-600 text-white border-emerald-200"
     },
     {
         title: "Prove & Improve",
         description: "We track results, share simple reports, and keep tuning the system to free more time and grow your pipeline.",
         icon: BarChart3,
-        color: "bg-amber-500/10 text-amber-600 border-amber-200"
+        color: "bg-amber-600 text-white border-amber-200"
     }
 ];
 
