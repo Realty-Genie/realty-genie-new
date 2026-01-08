@@ -44,7 +44,7 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="text-5xl md:text-7xl font-bold tracking-tight text-[#0F172A] leading-[1.1] mb-6 max-w-4xl"
+                    className="text-4xl md:text-7xl font-bold tracking-tight text-[#0F172A] leading-[1.1] mb-6 max-w-4xl"
                 >
                     Magically simplify <br className="hidden md:block" />
                     your <span className="italic font-serif">Real Estate</span> operations
@@ -66,12 +66,12 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
+                    className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-20"
                 >
-                    <Button size="lg" className="h-12 px-8 text-base font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 transition-all duration-300">
+                    <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-base font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 transition-all duration-300">
                         Get started
                     </Button>
-                    <Button variant="ghost" className="h-12 px-4 text-base font-medium text-muted-foreground hover:text-foreground gap-2 group">
+                    <Button variant="ghost" className="w-full sm:w-auto h-12 px-4 text-base font-medium text-muted-foreground hover:text-foreground gap-2 group">
                         See how it works
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Button>

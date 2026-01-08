@@ -222,7 +222,7 @@ export const CallingAssistantCard = () => {
             <div className="absolute inset-0 z-0">
                 <div className="relative w-full h-full flex items-center justify-center p-4 overflow-hidden">
                     <motion.div
-                        className="relative h-full aspect-[10/16] md:aspect-[10/16] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden flex flex-col"
+                        className="relative h-full aspect-[9/16] md:aspect-[10/16] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden flex flex-col"
                         animate={active ? { scale: 1.02, y: -5 } : { scale: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >

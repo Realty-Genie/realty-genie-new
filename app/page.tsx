@@ -50,7 +50,7 @@ export default function LandingPage() {
     <div className="min-h-screen mx-auto w-full bg-white text-[#0F172A] overflow-x-hidden font-sans">
       <Navbar />
 
-      <main>
+      <main className='max-w-7xl mx-auto'>
         <Hero />
         <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-50/50 blur-[120px]" />

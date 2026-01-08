@@ -46,8 +46,8 @@ export const Navbar = () => {
         <nav
             style={{ WebkitBackdropFilter: isScrolled ? 'blur(12px)' : 'none' }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-white/90 backdrop-blur-md border-b border-slate-200 py-3 shadow-md'
-                    : 'bg-white/50 backdrop-blur-sm py-4'
+                ? 'bg-white/90 backdrop-blur-md border-b border-slate-200 py-3 shadow-md'
+                : 'bg-white/50 backdrop-blur-sm py-4'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 md:px-8 h-12 md:h-14 flex items-center justify-between">
@@ -126,7 +126,7 @@ export const Navbar = () => {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: -10 }}
                             transition={{ duration: 0.2 }}
-                            className="absolute top-[calc(100%+8px)] left-4 right-4 z-50 md:hidden bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden p-6"
+                            className="absolute top-[calc(100%+8px)] left-4 right-4 z-50 md:hidden bg-white rounded-2xl border border-slate-200 shadow-2xl p-6"
                         >
                             <div className="flex flex-col gap-1">
                                 {navLinks.map((link) => (
