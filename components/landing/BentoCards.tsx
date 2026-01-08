@@ -15,17 +15,19 @@ const useMobileDetection = () => {
 
 export const LeadNurturingCard = () => {
     const [isHovered, setIsHovered] = useState(false);
+    const [isClicked, setIsClicked] = useState(false);
     const isMobile = useMobileDetection();
     const cardRef = useRef(null);
     const isInView = useInView(cardRef, { amount: 0.3 });
 
-    const active = isMobile ? isInView : isHovered;
+    const active = isHovered || isClicked;
 
     return (
         <motion.div
             ref={cardRef}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
+            onClick={() => setIsClicked(!isClicked)}
             className="relative min-h-[400px] h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a2e1d] to-[#0d1a0f] p-8 flex flex-col justify-between group cursor-pointer border border-white/5"
         >
             <div className="relative z-10 text-center">
@@ -110,7 +112,7 @@ export const ListingOptimizerCard = () => {
     const cardRef = useRef(null);
     const isInView = useInView(cardRef, { amount: 0.5 });
 
-    const active = isMobile ? isInView : isHovered;
+    const active = isInView || isHovered;
 
     return (
         <motion.div
@@ -191,7 +193,7 @@ export const CallingAssistantCard = () => {
     const cardRef = useRef(null);
     const isInView = useInView(cardRef, { amount: 0.5 });
 
-    const active = isMobile ? isInView : isHovered;
+    const active = isInView || isHovered;
 
     const names = [
         "Calls",
@@ -229,9 +231,9 @@ export const CallingAssistantCard = () => {
             </div>
 
             {/* Phone Container */}
-            <div className="flex-1 flex items-center justify-center relative overflow-hidden">
+            <div className="flex-1 flex items-center justify-center relative overflow-hidden pt-4">
                 <motion.div
-                    className="relative h-full max-h-[480px] aspect-[9/16] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden flex flex-col"
+                    className="relative h-full max-h-[480px] aspect-[8/16] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden flex flex-col"
                     animate={active ? { scale: 1.02, y: -5 } : { scale: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
@@ -239,7 +241,7 @@ export const CallingAssistantCard = () => {
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-800 rounded-b-2xl z-20" />
 
                     {/* Call Screen */}
-                    <div className="flex-1 flex flex-col items-center justify-between p-8 text-center pt-12 pb-10">
+                    <div className="flex-1 flex flex-col items-center justify-between p-8 text-center pt-20 pb-10">
                         <motion.div
                             animate={active ? {
                                 scale: [1, 1.05, 1],
@@ -262,19 +264,21 @@ export const CallingAssistantCard = () => {
                             </AnimatePresence>
                         </motion.div>
 
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={callerName}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                transition={{ duration: 0.3 }}
-                                className="space-y-1 w-full"
-                            >
-                                <h4 className="text-white text-lg font-medium truncate px-2">{callerName}</h4>
-                                <p className="text-primary text-[10px] font-medium tracking-widest uppercase animate-pulse">Calling...</p>
-                            </motion.div>
-                        </AnimatePresence>
+                        <div className="h-[60px] flex items-center justify-center w-full">
+                            <AnimatePresence mode="popLayout">
+                                <motion.div
+                                    key={callerName}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="space-y-1 w-full"
+                                >
+                                    <h4 className="text-white text-lg font-medium truncate px-2">{callerName}</h4>
+                                    <p className="text-primary text-[10px] font-medium tracking-widest uppercase animate-pulse">Calling...</p>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
 
                         {/* Call Controls */}
                         <div className="grid grid-cols-3 gap-3 w-full max-w-[180px]">
@@ -309,7 +313,7 @@ export const SEOGEOCard = () => {
     const cardRef = useRef(null);
     const isInView = useInView(cardRef, { amount: 0.5 });
 
-    const active = isMobile ? isInView : isHovered;
+    const active = isInView || isHovered;
 
     const googleTarget = "real estate solutions";
     const aiTarget = "give some solutions regarding real estate";
@@ -370,8 +374,8 @@ export const SEOGEOCard = () => {
                 </p>
             </div>
 
-            <div className="relative flex-1 bg-black/40 rounded-2xl border border-white/5 overflow-hidden flex flex-col">
-                <AnimatePresence mode="wait">
+            <div className="relative flex-1 min-h-[300px] bg-black/40 rounded-2xl border border-white/5 overflow-hidden flex flex-col">
+                <AnimatePresence mode="popLayout">
                     {view === 'google' ? (
                         <motion.div
                             key="google"

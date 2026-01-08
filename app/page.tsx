@@ -59,37 +59,7 @@ export default function LandingPage() {
           <div className="absolute bottom-[-10%] left-[10%] w-[35%] h-[35%] rounded-full bg-slate-50/60 blur-[150px]" />
         </div>
 
-        {/* --- High-Level Solutions Preview --- */}
-        <div className="bg-[#F8FAFC] py-24 md:py-32">
-          <div className="max-w-7xl mx-auto px-4 md:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#0F172A]">Everything you need to automate your growth.</h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Five powerful engines working in harmony to run your business in the background.
-              </p>
-              <Link href="/solutions">
-                <Button variant="outline" className="gap-2">
-                  View All Solutions <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
-            </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {solutionsPreview.slice(0, 3).map((item, i) => (
-                <div key={i} className="bg-white p-8 rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
-                  <div className="w-10 h-10 bg-primary/5 rounded-lg flex items-center justify-center text-primary mb-4 font-bold">{i + 1}</div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.desc}</p>
-                </div>
-              ))}
-              <div className="md:col-span-3 flex justify-center mt-8">
-                <p className="text-sm font-medium text-muted-foreground">
-                  + 2 more engines for Social Media & Market Ops
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
         <Process />
         {/* --- Why RealtyGenie Exists --- */}
         <Section className="bg-white">
