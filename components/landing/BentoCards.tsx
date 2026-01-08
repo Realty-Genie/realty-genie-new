@@ -33,7 +33,7 @@ export const LeadNurturingCard = () => {
                     AI lead-nurturing bot
                 </h3>
                 <p className="text-sm text-gray-400 max-w-[240px] mx-auto text-center">
-                    Engage and qualify leads in realtime via email or sms
+                    Engage. Qualify. Convert.
                 </p>
             </div>
 
@@ -121,10 +121,10 @@ export const ListingOptimizerCard = () => {
         >
             <div className="relative z-10 mb-6">
                 <h3 className="text-2xl font-semibold text-white mb-2">
-                    AI listing Optimizer
+                    Market Intelligence, Automated
                 </h3>
                 <p className="text-sm text-gray-400 mx-auto max-w-[200px]">
-                    Capturing stunning photos effortlessly using our advanced AI
+                    Instant insights. Zero manual work.
                 </p>
             </div>
 
