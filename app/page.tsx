@@ -146,7 +146,7 @@ export default function LandingPage() {
                 </p>
                 <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
-                    onClick={() => window.location.href = "https://cal.com/realtygenie/30min?overlayCalendar=true"}
+                    onClick={() => window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank")}
                     size="lg"
                     className="h-14 px-10 text-base bg-white text-[#0f172a] hover:bg-white/90 font-semibold border-0"
                   >

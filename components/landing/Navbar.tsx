@@ -39,7 +39,6 @@ export const Navbar = () => {
             ]
         },
         { name: 'How It Works', href: '/how-it-works' },
-        { name: 'About', href: '/about' },
     ];
 
     return (
@@ -97,7 +96,7 @@ export const Navbar = () => {
                         </div>
                     ))}
                     <Button
-                        onClick={() => window.location.href = "https://cal.com/realtygenie/30min?overlayCalendar=true"}
+                        onClick={() => window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank")}
                         size="sm"
                         className="shadow-lg shadow-primary/10 hover:shadow-primary/20 active:translate-y-0.5 transition-all bg-blue-600 hover:bg-blue-700 text-white"
                     >
@@ -182,7 +181,7 @@ export const Navbar = () => {
                                     <Button
                                         onClick={() => {
                                             setIsMenuOpen(false);
-                                            window.location.href = "https://cal.com/realtygenie/30min?overlayCalendar=true";
+                                            window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank");
                                         }}
                                         className="w-full h-12 text-base font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xl shadow-blue-500/20 rounded-xl transition-all"
                                     >

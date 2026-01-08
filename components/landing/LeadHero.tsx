@@ -53,7 +53,11 @@ export const LeadHero = () => {
                     transition={{ delay: 0.2, duration: 0.6 }}
                     className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
                 >
-                    <Button size="lg" className="h-14 px-10 text-lg font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-xl shadow-blue-500/20 transition-all duration-300">
+                    <Button
+                        onClick={() => window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank")}
+                        size="lg"
+                        className="h-14 px-10 text-lg font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-xl shadow-blue-500/20 transition-all duration-300"
+                    >
                         Get Started
                     </Button>
                 </motion.div>

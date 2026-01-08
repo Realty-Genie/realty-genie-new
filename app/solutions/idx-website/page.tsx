@@ -7,6 +7,7 @@ import { IdxResults } from '@/components/landing/IdxResults';
 import { IdxPricing } from '@/components/landing/IdxPricing';
 import { IdxFAQ } from '@/components/landing/IdxFAQ';
 import { SeoGeoAnimation } from '@/components/landing/SeoGeoAnimation';
+import { Footer } from '@/components/landing/Footer';
 import { motion } from 'framer-motion';
 
 export default function Page() {
@@ -43,7 +44,7 @@ export default function Page() {
                 {/* <IdxPricing /> */}
                 <IdxFAQ />
             </main>
-            {/* Footer could be added here if there's a reusable component */}
+            <Footer />
         </div>
     );
 }

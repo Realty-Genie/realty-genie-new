@@ -64,7 +64,11 @@ export const SocialMediaResults = () => {
                                 Join elite realtors who dominate the local scroll while focusing 100% on their clients.
                             </p>
                             <div className="pt-4">
-                                <Button size="lg" className="h-14 px-10 text-lg bg-white text-[#0F172A] hover:bg-white/90 font-bold rounded-xl transition-all duration-300">
+                                <Button
+                                    onClick={() => window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank")}
+                                    size="lg"
+                                    className="h-14 px-10 text-lg bg-white text-[#0F172A] hover:bg-white/90 font-bold rounded-xl transition-all duration-300"
+                                >
                                     Get Started Today <ArrowRight className="ml-2 w-5 h-5" />
                                 </Button>
                             </div>

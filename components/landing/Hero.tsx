@@ -68,7 +68,11 @@ export const Hero = () => {
                     transition={{ delay: 0.4 }}
                     className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-20"
                 >
-                    <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-base font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 transition-all duration-300">
+                    <Button
+                        onClick={() => window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank")}
+                        size="lg"
+                        className="w-full sm:w-auto h-12 px-8 text-base font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 transition-all duration-300"
+                    >
                         Get started
                     </Button>
                     <Button variant="ghost" className="w-full sm:w-auto h-12 px-4 text-base font-medium text-muted-foreground hover:text-foreground gap-2 group">

@@ -21,14 +21,7 @@ export const Footer = () => {
         ],
         company: [
             { name: 'About Us', href: '/about' },
-            { name: 'How It Works', href: '/how-it-works' },
-            { name: 'Contact', href: '/contact' },
-            { name: 'Careers', href: '/careers' },
-        ],
-        legal: [
-            { name: 'Privacy Policy', href: '/privacy' },
-            { name: 'Terms of Service', href: '/terms' },
-            { name: 'Cookie Policy', href: '/cookies' },
+            { name: 'How It Works', href: '/how-it-works' }
         ],
     };
 
@@ -97,6 +90,23 @@ export const Footer = () => {
                                 </li>
                             ))}
                         </ul>
+                        <div>
+                            <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Contact</h4>
+                            <ul className="space-y-4">
+                                <li>
+                                    <Phone className="w-5 h-5 inline-block pr-2" />
+                                    <span className="text-slate-500 hover:text-blue-600 font-medium transition-colors">
+                                        + (778) 792 2220
+                                    </span>
+                                </li>
+                                <li>
+                                    <Mail className="w-5 h-5 inline-block pr-2" />
+                                    <span className="text-slate-500 hover:text-blue-600 font-medium transition-colors">
+                                        info@realtygenie.com
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -104,13 +114,6 @@ export const Footer = () => {
                     <p className="text-sm text-slate-400 font-medium italic uppercase tracking-wider">
                         © {currentYear} RealtyGenie — Built for the future of real estate.
                     </p>
-                    <div className="flex gap-8">
-                        {footerLinks.legal.map((link) => (
-                            <Link key={link.name} href={link.href} className="text-sm text-slate-400 hover:text-blue-600 font-medium transition-colors">
-                                {link.name}
-                            </Link>
-                        ))}
-                    </div>
                 </div>
             </div>
         </footer>

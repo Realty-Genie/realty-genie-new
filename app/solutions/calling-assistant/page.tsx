@@ -7,6 +7,7 @@ import { LaptopShowcase } from '@/components/landing/LaptopShowcase';
 import { CallingFeatures } from '@/components/landing/CallingFeatures';
 import { CallingResults } from '@/components/landing/CallingResults';
 import { IdxFAQ } from '@/components/landing/IdxFAQ';
+import { Footer } from '@/components/landing/Footer';
 
 export default function Page() {
     return (
@@ -24,6 +25,7 @@ export default function Page() {
                     <IdxFAQ />
                 </div>
             </main>
+            <Footer />
         </div>
     );
 }

@@ -6,6 +6,7 @@ import { LeadHero } from '@/components/landing/LeadHero';
 import { LeadFeatures } from '@/components/landing/LeadFeatures';
 import { LeadResults } from '@/components/landing/LeadResults';
 import { IdxFAQ } from '@/components/landing/IdxFAQ';
+import { Footer } from '@/components/landing/Footer';
 
 export default function Page() {
     return (
@@ -22,6 +23,7 @@ export default function Page() {
                     <IdxFAQ />
                 </div>
             </main>
+            <Footer />
         </div>
     );
 }
