@@ -7,8 +7,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Navbar } from '@/components/landing/Navbar';
 import { Hero } from '@/components/landing/Hero';
-import { Solutions } from '@/components/landing/Solutions';
-import { AnimatedBackground } from '@/components/landing/AnimatedBackground';
 import { Process } from '@/components/landing/Process';
 import { Footer } from '@/components/landing/Footer';
 

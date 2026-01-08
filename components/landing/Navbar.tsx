@@ -35,7 +35,7 @@ export const Navbar = () => {
             dropdown: [
                 { name: 'Social Media', href: '/services/social-media' },
                 { name: 'Market Intelligence', href: '/services/market-intelligence' },
-                { name: 'AI Dashboard', href: '/services/ai-dashboard' },
+                { name: 'Team monitoring', href: '/services/ai-dashboard' },
             ]
         },
         { name: 'How It Works', href: '/how-it-works' },
