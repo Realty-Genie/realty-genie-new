@@ -70,7 +70,7 @@ export const LeadHero = () => {
                             src="/lead-management-inbox.png"
                             alt="Lead Management Inbox Mockup"
                             fill
-                            className="object-cover"
+                            className="object-contain"
                         />
                     </div>
                     {/* Overlay to give it a more integrated look if the image is too plain */}

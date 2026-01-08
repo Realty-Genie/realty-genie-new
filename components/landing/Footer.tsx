@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Instagram, Facebook, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -39,10 +39,8 @@ export const Footer = () => {
                     {/* Brand Section */}
                     <div className="lg:col-span-2">
                         <Link href="/" className="inline-block mb-6 group">
-                            <div className="flex items-center gap-2">
-                                <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
-                                    R
-                                </div>
+                            <div className="flex items-center gap-3">
+                                <img src="/logo.png" alt="RealtyGenie" className="h-10 w-auto group-hover:scale-105 transition-transform" />
                                 <span className="text-2xl font-bold tracking-tight text-slate-900 font-outfit">RealtyGenie</span>
                             </div>
                         </Link>
@@ -50,20 +48,14 @@ export const Footer = () => {
                             The all-in-one AI operating system for modern real estate professionals. Automate your leads, calls, and social visibility.
                         </p>
                         <div className="flex gap-4">
-                            {[
-                                { icon: Instagram, href: '#' },
-                                { icon: Facebook, href: '#' },
-                                { icon: Twitter, href: '#' },
-                                { icon: Linkedin, href: '#' },
-                            ].map((social, i) => (
-                                <Link
-                                    key={i}
-                                    href={social.href}
-                                    className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm"
-                                >
-                                    <social.icon className="w-5 h-5" />
-                                </Link>
-                            ))}
+                            <Link
+                                href="https://www.linkedin.com/company/realtygenie"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm"
+                            >
+                                <Linkedin className="w-5 h-5" />
+                            </Link>
                         </div>
                     </div>
 

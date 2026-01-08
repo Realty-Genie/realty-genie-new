@@ -51,8 +51,9 @@ export const Navbar = () => {
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 md:px-8 h-12 md:h-14 flex items-center justify-between">
-                <Link href="/" className="text-xl md:text-2xl font-bold tracking-tight text-primary flex items-center gap-2 group">
-                    <span className="font-outfit">RealtyGenie</span>
+                <Link href="/" className="flex items-center gap-2 group">
+                    <img src="/logo.png" alt="RealtyGenie" className="h-8 md:h-10 w-auto" />
+                    <span className="text-xl md:text-2xl font-bold tracking-tight text-primary font-outfit">RealtyGenie</span>
                 </Link>
 
                 <div className="hidden md:flex items-center gap-8">
