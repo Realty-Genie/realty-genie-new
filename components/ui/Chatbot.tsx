@@ -102,7 +102,7 @@ const Chatbot = () => {
                   <Bot size={22} className="text-primary-foreground" />
                 </div>
                 <div>
-                  <h3 className="text-primary-foreground font-medium  leading-none">Denise Mai AI</h3>
+                  <h3 className="text-primary-foreground font-medium  leading-none">RealtyGenie AI</h3>
                   <div className="flex items-center gap-1.5 mt-1">
                     <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                     <span className="text-primary-foreground/80 text-[10px] uppercase tracking-wider font-medium">Active Now</span>
