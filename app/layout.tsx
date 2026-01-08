@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import Chatbot from "@/components/ui/Chatbot";
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
@@ -27,6 +28,7 @@ export default function RootLayout({
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/5 blur-[100px] rounded-full" />
         </div>
         {children}
+        <Chatbot />
       </body>
     </html>
   );
