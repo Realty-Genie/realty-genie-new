@@ -117,7 +117,7 @@ export const ListingOptimizerCard = () => {
             ref={cardRef}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="relative min-h-[400px] h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1c1c1c] to-[#0a0a0a] p-8 flex flex-col text-center border border-white/5 group cursor-pointer"
+            className="relative h-[400px] w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1c1c1c] to-[#0a0a0a] p-8 flex flex-col text-center border border-white/5 group cursor-pointer"
         >
             <div className="relative z-10 mb-6">
                 <h3 className="text-2xl font-semibold text-white mb-2">
@@ -210,83 +210,17 @@ export const CallingAssistantCard = () => {
             }, 2000);
         }
         return () => clearInterval(interval);
-    }, [active, names]); // Updated dependency to active
+    }, [active, names]);
 
     return (
         <motion.div
             ref={cardRef}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="relative min-h-[500px] md:min-h-0 h-full w-full overflow-hidden rounded-3xl bg-[#020617] flex flex-col justify-between group cursor-pointer border border-white/5"
+            className="relative md:min-h-0 h-[650px] md:h-full w-full overflow-hidden rounded-3xl bg-[#020617] p-6 flex flex-col group cursor-pointer border border-white/5"
         >
-            <div className="absolute inset-0 z-0">
-                <div className="relative w-full h-full flex items-center justify-center p-4 overflow-hidden">
-                    <motion.div
-                        className="relative h-full aspect-[9/16] md:aspect-[10/16] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden flex flex-col"
-                        animate={active ? { scale: 1.02, y: -5 } : { scale: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        {/* Notch */}
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-800 rounded-b-2xl z-20" />
-
-                        {/* Call Screen */}
-                        <div className="flex-1 flex flex-col items-center justify-between p-6 text-center pt-12 pb-8">
-                            <motion.div
-                                animate={active ? {
-                                    scale: [1, 1.05, 1],
-                                    boxShadow: ["0 0 0px rgba(59, 130, 246, 0)", "0 0 30px rgba(59, 130, 246, 0.4)", "0 0 0px rgba(59, 130, 246, 0)"]
-                                } : {}}
-                                transition={{ duration: 2, repeat: Infinity }}
-                                className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center relative"
-                            >
-                                <PhoneCall className="w-8 h-8 text-primary" />
-                                <AnimatePresence>
-                                    {active && [1, 2].map((i) => (
-                                        <motion.div
-                                            key={i}
-                                            initial={{ scale: 1, opacity: 0.5 }}
-                                            animate={{ scale: 2, opacity: 0 }}
-                                            transition={{ duration: 2, repeat: Infinity, delay: i }}
-                                            className="absolute inset-0 border border-primary rounded-full pointer-events-none"
-                                        />
-                                    ))}
-                                </AnimatePresence>
-                            </motion.div>
-
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={callerName}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="space-y-1"
-                                >
-                                    <h4 className="text-white text-lg font-medium truncate w-full px-2">{callerName}</h4>
-                                    <p className="text-primary text-[10px] font-medium tracking-widest uppercase animate-pulse">Calling...</p>
-                                </motion.div>
-                            </AnimatePresence>
-
-                            {/* Call Controls */}
-                            <div className="grid grid-cols-3 gap-3 w-full max-w-[180px]">
-                                {[1, 2, 3, 4, 5, 6].map((i) => (
-                                    <div key={i} className="aspect-square rounded-full bg-white/5 flex items-center justify-center">
-                                        <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* End Call Button */}
-                            <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center shadow-lg shadow-red-500/20 mt-2">
-                                <Phone className="w-6 h-6 text-white rotate-[135deg]" />
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Overlay Header */}
-            <div className="relative z-10 p-8 pt-10 text-center md:text-left pointer-events-none">
+            {/* Header */}
+            <div className="relative z-10 mb-6 text-center md:text-left">
                 <h3 className="text-2xl font-semibold text-white mb-2 leading-tight">
                     AI calling assistant
                 </h3>
@@ -295,10 +229,77 @@ export const CallingAssistantCard = () => {
                 </p>
             </div>
 
+            {/* Phone Container */}
+            <div className="flex-1 flex items-center justify-center relative overflow-hidden">
+                <motion.div
+                    className="relative h-full max-h-[480px] aspect-[9/16] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden flex flex-col"
+                    animate={active ? { scale: 1.02, y: -5 } : { scale: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    {/* Notch */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-800 rounded-b-2xl z-20" />
+
+                    {/* Call Screen */}
+                    <div className="flex-1 flex flex-col items-center justify-between p-8 text-center pt-12 pb-10">
+                        <motion.div
+                            animate={active ? {
+                                scale: [1, 1.05, 1],
+                                boxShadow: ["0 0 0px rgba(59, 130, 246, 0)", "0 0 30px rgba(59, 130, 246, 0.4)", "0 0 0px rgba(59, 130, 246, 0)"]
+                            } : {}}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center relative"
+                        >
+                            <PhoneCall className="w-8 h-8 text-primary" />
+                            <AnimatePresence>
+                                {active && [1, 2].map((i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ scale: 1, opacity: 0.5 }}
+                                        animate={{ scale: 2, opacity: 0 }}
+                                        transition={{ duration: 2, repeat: Infinity, delay: i }}
+                                        className="absolute inset-0 border border-primary rounded-full pointer-events-none"
+                                    />
+                                ))}
+                            </AnimatePresence>
+                        </motion.div>
+
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={callerName}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.3 }}
+                                className="space-y-1 w-full"
+                            >
+                                <h4 className="text-white text-lg font-medium truncate px-2">{callerName}</h4>
+                                <p className="text-primary text-[10px] font-medium tracking-widest uppercase animate-pulse">Calling...</p>
+                            </motion.div>
+                        </AnimatePresence>
+
+                        {/* Call Controls */}
+                        <div className="grid grid-cols-3 gap-3 w-full max-w-[180px]">
+                            {[1, 2, 3, 4, 5, 6].map((i) => (
+                                <div key={i} className="aspect-square rounded-full bg-white/5 flex items-center justify-center">
+                                    <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* End Call Button */}
+                        <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center shadow-lg shadow-red-500/20 mt-2">
+                            <Phone className="w-6 h-6 text-white rotate-[135deg]" />
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-primary/20 transition-colors duration-500" />
         </motion.div>
     );
 };
+
+
 
 export const SEOGEOCard = () => {
     const [isHovered, setIsHovered] = useState(false);

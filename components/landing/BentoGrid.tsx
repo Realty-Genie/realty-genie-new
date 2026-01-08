@@ -19,7 +19,7 @@ export const BentoGrid = () => {
                     <SEOGEOCard />
                 </div>
                 <div className="md:col-span-1">
-                    <ListingOptimizerCard />
+                    <CallingAssistantCard />
                 </div>
 
                 {/* Row 2: Calling Assistant (2 cols) & Lead Nurturing (1 col) */}
@@ -27,7 +27,7 @@ export const BentoGrid = () => {
                     <LeadNurturingCard />
                 </div>
                 <div className="md:col-span-2">
-                    <CallingAssistantCard />
+                    <ListingOptimizerCard />
                 </div>
             </motion.div>
         </div>

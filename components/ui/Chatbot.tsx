@@ -190,7 +190,7 @@ const Chatbot = () => {
               </form>
 
               <p className="text-center text-[10px] text-muted-foreground/40 mt-3 font-light">
-                Luxury service, powered by Denise Mai AI assistant.
+                AI-powered assistant by RealtyGenie
               </p>
             </div>
           </motion.div>
