@@ -194,10 +194,9 @@ export const CallingAssistantCard = () => {
     const active = isMobile ? isInView : isHovered;
 
     const names = [
-        "RealtyGenie AI",
-        "Seller Identification AI",
-        "Your Personal AI",
-        "Lead Nurture AI"
+        "Calls",
+        "Follow-ups",
+        "Done"
     ];
 
     useEffect(() => {
@@ -225,7 +224,7 @@ export const CallingAssistantCard = () => {
                     AI calling assistant
                 </h3>
                 <p className="text-sm text-gray-400 max-w-[240px] mx-auto md:mx-0">
-                    Your autonomous voice engine
+                    From first ring to booked call—AI handles it.
                 </p>
             </div>
 
@@ -360,17 +359,14 @@ export const SEOGEOCard = () => {
             onHoverEnd={() => setIsHovered(false)}
             className="relative min-h-[450px] md:min-h-0 h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-white/5 p-8 flex flex-col group cursor-pointer shadow-2xl transition-all duration-500"
         >
-            <div className="relative z-10 mb-8">
-                <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                        <Search className="w-4 h-4 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-white leading-tight">
-                        AI SEO & GEO Friendly
+            <div className="relative z-10 mb-8 ">
+                <div className="flex items-center gap-2 mb-2 text-left">
+                    <h3 className="text-xl font-semibold text-white leading-tight text-left">
+                        Found first on Google <br /> and AI-powered searches.
                     </h3>
                 </div>
-                <p className="text-sm text-gray-400 max-w-[300px]">
-                    Maximize your reach where modern clients find homes.
+                <p className="text-sm text-gray-400 max-w-[300px] text-left">
+                    AI-driven SEO and local GEO optimization built for realtors.
                 </p>
             </div>
 

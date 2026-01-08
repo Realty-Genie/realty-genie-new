@@ -57,8 +57,8 @@ export const Hero = () => {
                     animate="show"
                     className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
                 >
-                    Automate lead capture. Effortless follow-ups. Financial clarity. <br className="hidden md:block" />
-                    Set up in 10 mins. Back to closing by 2 PM.
+                    Every lead contacted. Every follow-up handled. Automatically. <br />
+                    AI calling, effortless follow-ups, and instant reporting—so no opportunity slips through.
                 </motion.p>
 
                 {/* Buttons */}
