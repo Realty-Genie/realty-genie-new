@@ -1,6 +1,5 @@
-'use client';
-
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Globe, Users, Phone, MessageSquare, BarChart3, Check, Zap, Sparkles } from 'lucide-react';
 
@@ -100,12 +99,29 @@ export const Solutions = () => {
 };
 
 const SolutionCard = ({ data, index }: { data: any, index: number }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { amount: 0.3 });
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    const showOutcome = isMobile ? isInView : isHovered;
+
     return (
         <motion.div
+            ref={cardRef}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
             className="group relative bg-white rounded-2xl border border-gray-100 shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
         >
             <div className="p-8 md:p-10 flex flex-col h-full">
@@ -135,8 +151,8 @@ const SolutionCard = ({ data, index }: { data: any, index: number }) => {
                     </div>
                 </div>
 
-                {/* Hover Reveal Outcome */}
-                <div className="absolute inset-x-0 bottom-0 p-4 bg-blue-50/50 translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex flex-wrap gap-2 justify-center">
+                {/* Outcome Reveal */}
+                <div className={`absolute inset-x-0 bottom-0 p-4 bg-blue-50/50 transition-transform duration-300 flex flex-wrap gap-2 justify-center ${showOutcome ? 'translate-y-0' : 'translate-y-full'}`}>
                     {data.outcome.slice(0, 2).map((o: string, i: number) => (
                         <span key={i} className="text-xs font-medium text-blue-700 flex items-center gap-1">
                             <Zap className="w-3 h-3 fill-blue-700" /> {o}

@@ -33,7 +33,7 @@ export const CallingHero = () => {
                     className="text-5xl md:text-7xl font-bold tracking-tight text-[#0F172A] leading-[1.1] mb-6 max-w-4xl"
                 >
                     Every new lead <br className="hidden md:block" />
-                    gets a call in <span className="text-blue-600 italic">minutes</span>
+                    gets a call in <span className="text-yellow-600 italic">minutes</span>
                 </motion.h1>
 
                 {/* Subtext */}

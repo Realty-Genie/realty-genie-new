@@ -9,6 +9,15 @@ import { Button } from '@/components/ui/button';
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const navLinks = [
         {
@@ -34,8 +43,14 @@ export const Navbar = () => {
     ];
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border/40 transition-all duration-300">
-            <div className="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+        <nav
+            style={{ WebkitBackdropFilter: isScrolled ? 'blur(12px)' : 'none' }}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+                    ? 'bg-white/90 backdrop-blur-md border-b border-slate-200 py-3 shadow-md'
+                    : 'bg-white/50 backdrop-blur-sm py-4'
+                }`}
+        >
+            <div className="max-w-7xl mx-auto px-4 md:px-8 h-12 md:h-14 flex items-center justify-between">
                 <Link href="/" className="text-xl md:text-2xl font-bold tracking-tight text-primary flex items-center gap-2 group">
                     <span className="font-outfit">RealtyGenie</span>
                 </Link>
@@ -86,68 +101,86 @@ export const Navbar = () => {
                 </div>
 
                 {/* Mobile Toggle */}
-                <button className="md:hidden p-2 text-primary" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                    {isMenuOpen ? <X /> : <Menu />}
+                <button
+                    className="md:hidden p-2 text-slate-900 focus:outline-none"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="md:hidden bg-white border-b border-border overflow-y-auto max-h-[80vh]"
-                    >
-                        <div className="flex flex-col p-4 gap-2">
-                            {navLinks.map((link) => (
-                                <div key={link.name}>
-                                    {link.dropdown ? (
-                                        <div className="flex flex-col">
-                                            <button
-                                                onClick={() => setActiveDropdown(activeDropdown === link.name ? null : link.name)}
-                                                className="flex items-center justify-between w-full text-lg font-medium py-3 text-primary"
+                    <>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-40 md:hidden"
+                            onClick={() => setIsMenuOpen(false)}
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-[calc(100%+8px)] left-4 right-4 z-50 md:hidden bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden p-6"
+                        >
+                            <div className="flex flex-col gap-1">
+                                {navLinks.map((link) => (
+                                    <div key={link.name}>
+                                        {link.dropdown ? (
+                                            <div className="flex flex-col">
+                                                <button
+                                                    onClick={() => setActiveDropdown(activeDropdown === link.name ? null : link.name)}
+                                                    className="flex items-center justify-between w-full text-lg font-bold py-4 text-slate-900 border-b border-slate-50"
+                                                >
+                                                    {link.name}
+                                                    <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />
+                                                </button>
+                                                <AnimatePresence>
+                                                    {activeDropdown === link.name && (
+                                                        <motion.div
+                                                            initial={{ height: 0, opacity: 0 }}
+                                                            animate={{ height: 'auto', opacity: 1 }}
+                                                            exit={{ height: 0, opacity: 0 }}
+                                                            className="overflow-hidden bg-slate-50/50 rounded-xl mt-2 px-4 flex flex-col"
+                                                        >
+                                                            {link.dropdown.map((item) => (
+                                                                <Link
+                                                                    key={item.name}
+                                                                    href={item.href}
+                                                                    className="text-base text-slate-600 py-3 font-medium hover:text-blue-600 transition-colors"
+                                                                    onClick={() => setIsMenuOpen(false)}
+                                                                >
+                                                                    {item.name}
+                                                                </Link>
+                                                            ))}
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
+                                            </div>
+                                        ) : (
+                                            <Link
+                                                href={link.href}
+                                                className="text-lg font-bold py-4 text-slate-900 block border-b border-slate-50"
+                                                onClick={() => setIsMenuOpen(false)}
                                             >
                                                 {link.name}
-                                                <ChevronDown className={`w-5 h-5 transition-transform ${activeDropdown === link.name ? 'rotate-180' : ''}`} />
-                                            </button>
-                                            <AnimatePresence>
-                                                {activeDropdown === link.name && (
-                                                    <motion.div
-                                                        initial={{ height: 0, opacity: 0 }}
-                                                        animate={{ height: 'auto', opacity: 1 }}
-                                                        exit={{ height: 0, opacity: 0 }}
-                                                        className="overflow-hidden pl-4 flex flex-col gap-2 mb-2"
-                                                    >
-                                                        {link.dropdown.map((item) => (
-                                                            <Link
-                                                                key={item.name}
-                                                                href={item.href}
-                                                                className="text-base text-muted-foreground py-2"
-                                                                onClick={() => setIsMenuOpen(false)}
-                                                            >
-                                                                {item.name}
-                                                            </Link>
-                                                        ))}
-                                                    </motion.div>
-                                                )}
-                                            </AnimatePresence>
-                                        </div>
-                                    ) : (
-                                        <Link
-                                            href={link.href}
-                                            className="text-lg font-medium py-3 text-primary block"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            {link.name}
-                                        </Link>
-                                    )}
+                                            </Link>
+                                        )}
+                                    </div>
+                                ))}
+                                <div className="mt-6">
+                                    <Button className="w-full h-12 text-base font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xl shadow-blue-500/20 rounded-xl transition-all">
+                                        Book a Demo
+                                    </Button>
                                 </div>
-                            ))}
-                            <Button className="w-full mt-4">Book a Demo</Button>
-                        </div>
-                    </motion.div>
+                            </div>
+                        </motion.div>
+                    </>
                 )}
             </AnimatePresence>
         </nav>

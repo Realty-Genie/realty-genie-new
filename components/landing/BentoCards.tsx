@@ -1,17 +1,32 @@
-'use client';
-
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Mail, Send, CheckCircle2, Camera, Sparkles, FileText, ShieldCheck, UploadCloud, Search, Phone, PhoneCall, PenLine } from 'lucide-react';
+
+const useMobileDetection = () => {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+    return isMobile;
+};
 
 export const LeadNurturingCard = () => {
     const [isHovered, setIsHovered] = useState(false);
+    const isMobile = useMobileDetection();
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { amount: 0.3 });
+
+    const active = isMobile ? isInView : isHovered;
 
     return (
         <motion.div
+            ref={cardRef}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="relative h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a2e1d] to-[#0d1a0f] p-8 flex flex-col justify-between group cursor-pointer border border-white/5"
+            className="relative min-h-[400px] h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a2e1d] to-[#0d1a0f] p-8 flex flex-col justify-between group cursor-pointer border border-white/5"
         >
             <div className="relative z-10 text-center">
                 <h3 className="text-2xl font-semibold text-white mb-2 leading-tight">
@@ -32,7 +47,7 @@ export const LeadNurturingCard = () => {
                     </div>
 
                     <AnimatePresence>
-                        {isHovered ? (
+                        {active ? (
                             <motion.div
                                 key="sent"
                                 initial={{ y: 30, opacity: 0, scale: 0.8 }}
@@ -65,14 +80,14 @@ export const LeadNurturingCard = () => {
 
                     {/* Background particles */}
                     <motion.div
-                        animate={{ opacity: isHovered ? 1 : 0 }}
+                        animate={{ opacity: active ? 1 : 0 }}
                         className="absolute inset-0 pointer-events-none"
                     >
                         {[...Array(6)].map((_, i) => (
                             <motion.div
                                 key={i}
                                 className="absolute w-1 h-1 bg-emerald-400 rounded-full"
-                                animate={isHovered ? {
+                                animate={active ? {
                                     x: [Math.random() * 200 - 100, Math.random() * 400 - 200],
                                     y: [Math.random() * 100 - 50, -200],
                                     opacity: [0, 1, 0]
@@ -91,12 +106,18 @@ export const LeadNurturingCard = () => {
 
 export const ListingOptimizerCard = () => {
     const [isHovered, setIsHovered] = useState(false);
+    const isMobile = useMobileDetection();
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { amount: 0.5 });
+
+    const active = isMobile ? isInView : isHovered;
 
     return (
         <motion.div
+            ref={cardRef}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="relative h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1c1c1c] to-[#0a0a0a] p-8 flex flex-col text-center border border-white/5 group cursor-pointer"
+            className="relative min-h-[400px] h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1c1c1c] to-[#0a0a0a] p-8 flex flex-col text-center border border-white/5 group cursor-pointer"
         >
             <div className="relative z-10 mb-6">
                 <h3 className="text-2xl font-semibold text-white mb-2">
@@ -119,7 +140,7 @@ export const ListingOptimizerCard = () => {
 
                             {/* AI Scanning Line */}
                             <motion.div
-                                animate={isHovered ? {
+                                animate={active ? {
                                     top: ['0%', '100%', '0%']
                                 } : { top: '0%' }}
                                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
@@ -128,7 +149,7 @@ export const ListingOptimizerCard = () => {
 
                             {/* Sparkles on hover */}
                             <AnimatePresence>
-                                {isHovered && (
+                                {active && (
                                     <motion.div
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
@@ -166,6 +187,11 @@ export const ListingOptimizerCard = () => {
 export const CallingAssistantCard = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [callerName, setCallerName] = useState("RealtyGenie AI");
+    const isMobile = useMobileDetection();
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { amount: 0.5 });
+
+    const active = isMobile ? isInView : isHovered;
 
     const names = [
         "RealtyGenie AI",
@@ -174,9 +200,9 @@ export const CallingAssistantCard = () => {
         "Lead Nurture AI"
     ];
 
-    React.useEffect(() => {
+    useEffect(() => {
         let interval: any;
-        if (isHovered) {
+        if (active) {
             let i = 0;
             interval = setInterval(() => {
                 i = (i + 1) % names.length;
@@ -184,20 +210,20 @@ export const CallingAssistantCard = () => {
             }, 2000);
         }
         return () => clearInterval(interval);
-    }, [isHovered, names]); // Added names to dependency array
+    }, [active, names]); // Updated dependency to active
 
     return (
         <motion.div
+            ref={cardRef}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="relative h-full w-full overflow-hidden rounded-3xl bg-[#020617] flex flex-col justify-between group cursor-pointer border border-white/5"
+            className="relative min-h-[500px] md:min-h-0 h-full w-full overflow-hidden rounded-3xl bg-[#020617] flex flex-col justify-between group cursor-pointer border border-white/5"
         >
             <div className="absolute inset-0 z-0">
-                {/* Immersive Phone UI that fills space */}
                 <div className="relative w-full h-full flex items-center justify-center p-4 overflow-hidden">
                     <motion.div
-                        className="relative h-[95%] aspect-[10/16] md:aspect-[10/16] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden flex flex-col"
-                        animate={isHovered ? { scale: 1.02, y: -5 } : { scale: 1, y: 0 }}
+                        className="relative h-full aspect-[10/16] md:aspect-[10/16] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden flex flex-col"
+                        animate={active ? { scale: 1.02, y: -5 } : { scale: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
                         {/* Notch */}
@@ -206,7 +232,7 @@ export const CallingAssistantCard = () => {
                         {/* Call Screen */}
                         <div className="flex-1 flex flex-col items-center justify-between p-6 text-center pt-12 pb-8">
                             <motion.div
-                                animate={isHovered ? {
+                                animate={active ? {
                                     scale: [1, 1.05, 1],
                                     boxShadow: ["0 0 0px rgba(59, 130, 246, 0)", "0 0 30px rgba(59, 130, 246, 0.4)", "0 0 0px rgba(59, 130, 246, 0)"]
                                 } : {}}
@@ -215,7 +241,7 @@ export const CallingAssistantCard = () => {
                             >
                                 <PhoneCall className="w-8 h-8 text-primary" />
                                 <AnimatePresence>
-                                    {isHovered && [1, 2].map((i) => (
+                                    {active && [1, 2].map((i) => (
                                         <motion.div
                                             key={i}
                                             initial={{ scale: 1, opacity: 0.5 }}
@@ -279,15 +305,20 @@ export const SEOGEOCard = () => {
     const [view, setView] = useState<'google' | 'ai'>('google');
     const [searchText, setSearchText] = useState("");
     const [aiText, setAiText] = useState("");
+    const isMobile = useMobileDetection();
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { amount: 0.5 });
+
+    const active = isMobile ? isInView : isHovered;
 
     const googleTarget = "real estate solutions";
     const aiTarget = "give some solutions regarding real estate";
 
-    React.useEffect(() => {
+    useEffect(() => {
         let cycleInterval: any;
         let typingInterval: any;
 
-        if (isHovered) {
+        if (active) {
             cycleInterval = setInterval(() => {
                 setView(prev => {
                     const next = prev === 'google' ? 'ai' : 'google';
@@ -319,13 +350,14 @@ export const SEOGEOCard = () => {
             clearInterval(cycleInterval);
             clearInterval(typingInterval);
         };
-    }, [isHovered, view, searchText.length, aiText.length]);
+    }, [active, view, searchText.length, aiText.length]);
 
     return (
         <motion.div
+            ref={cardRef}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="relative h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-white/5 p-8 flex flex-col group cursor-pointer shadow-2xl transition-all duration-500"
+            className="relative min-h-[450px] md:min-h-0 h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-white/5 p-8 flex flex-col group cursor-pointer shadow-2xl transition-all duration-500"
         >
             <div className="relative z-10 mb-8">
                 <div className="flex items-center gap-2 mb-2">

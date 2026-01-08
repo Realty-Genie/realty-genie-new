@@ -32,7 +32,7 @@ export const CallingFeatures = () => {
         },
         {
             title: "Qualification & Scripting",
-            icon: <FileText className="w-8 h-8 text-white  " />,
+            icon: <FileText className="w-8 h-8 text-white" />,
             items: [
                 "Custom scripts for buyers, sellers, investors, landlords",
                 "Capture motivation, budget, timeline, and key preferences",
