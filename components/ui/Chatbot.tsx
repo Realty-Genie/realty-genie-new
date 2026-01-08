@@ -87,8 +87,8 @@ const Chatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95, transformOrigin: "bottom right" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="mb-4 w-[90vw] sm:w-[400px] bg-card border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col pointer-events-auto"
-            style={{ height: "min(600px, 70vh)" }}
+            className="mb-4 w-[90vw] sm:w-[360px] bg-card border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col pointer-events-auto"
+            style={{ height: "min(500px, 65vh)" }}
           >
             {/* Header */}
             <div className="p-4 bg-primary flex justify-between items-center relative overflow-hidden">
@@ -98,11 +98,11 @@ const Chatbot = () => {
               </div>
 
               <div className="flex items-center gap-3 relative z-10">
-                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-inner">
-                  <Bot size={22} className="text-primary-foreground" />
+                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-inner overflow-hidden">
+                  <img src="/anna-avatar.png" alt="Anna" className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <h3 className="text-primary-foreground font-medium  leading-none">RealtyGenie AI</h3>
+                  <h3 className="text-primary-foreground font-medium  leading-none">Anna</h3>
                   <div className="flex items-center gap-1.5 mt-1">
                     <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                     <span className="text-primary-foreground/80 text-[10px] uppercase tracking-wider font-medium">Active Now</span>
