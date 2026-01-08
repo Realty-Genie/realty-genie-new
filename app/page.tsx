@@ -9,6 +9,7 @@ import { Navbar } from '@/components/landing/Navbar';
 import { Hero } from '@/components/landing/Hero';
 import { Solutions } from '@/components/landing/Solutions';
 import { AnimatedBackground } from '@/components/landing/AnimatedBackground';
+import { Process } from '@/components/landing/Process';
 
 const Section = ({
   children,
@@ -88,7 +89,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-
+        <Process />
         {/* --- Why RealtyGenie Exists --- */}
         <Section className="bg-white">
           <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
@@ -145,6 +146,8 @@ export default function LandingPage() {
             </FadeIn>
           </div>
         </Section>
+
+
 
         {/* --- Philosophy / How It Works Teaser --- */}
         <Section className="text-center py-32">

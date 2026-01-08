@@ -52,8 +52,7 @@ export default function HowItWorksPage() {
                                 Your Path to Automation
                             </span>
                             <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-8 max-w-4xl">
-                                Automate Your <br className="hidden md:block" />
-                                <span className="italic font-serif">Real Estate</span> Operations
+                                How <span className="text-primary italic font-serif">RealtyGenie</span> Works
                             </h1>
                             <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
                                 Setting up RealtyGenie is simple. Within minutes, your AI twin will be processing leads, handling calls, and syncing your entire business.

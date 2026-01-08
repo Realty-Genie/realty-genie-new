@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Send, CheckCircle2, Camera, Sparkles, FileText, ShieldCheck, UploadCloud, Search } from 'lucide-react';
+import { Mail, Send, CheckCircle2, Camera, Sparkles, FileText, ShieldCheck, UploadCloud, Search, Phone, PhoneCall, PenLine } from 'lucide-react';
 
 export const LeadNurturingCard = () => {
     const [isHovered, setIsHovered] = useState(false);
@@ -151,8 +151,8 @@ export const ListingOptimizerCard = () => {
                             <div className="w-1/2 h-3 bg-white/10 rounded" />
                         </div>
 
-                        <div className="mt-auto mb-8 h-12 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
-                            <span className="text-xs font-bold text-white uppercase tracking-widest">Enhance Photo</span>
+                        <div className="mt-auto mb-14 h-12 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
+                            <span className="text-xs font-bold text-white uppercase tracking-widest ">Enhance Photo</span>
                         </div>
                     </div>
                 </div>
@@ -163,122 +163,282 @@ export const ListingOptimizerCard = () => {
     );
 };
 
-export const DocumentAnalysisCard = () => {
+export const CallingAssistantCard = () => {
     const [isHovered, setIsHovered] = useState(false);
-    const [progress, setProgress] = useState(0);
+    const [callerName, setCallerName] = useState("RealtyGenie AI");
+
+    const names = [
+        "RealtyGenie AI",
+        "Seller Identification AI",
+        "Your Personal AI",
+        "Lead Nurture AI"
+    ];
 
     React.useEffect(() => {
         let interval: any;
         if (isHovered) {
-            setProgress(0);
+            let i = 0;
             interval = setInterval(() => {
-                setProgress(prev => (prev < 100 ? prev + 1 : 100));
-            }, 30);
-        } else {
-            setProgress(0);
+                i = (i + 1) % names.length;
+                setCallerName(names[i]);
+            }, 2000);
         }
         return () => clearInterval(interval);
-    }, [isHovered]);
+    }, [isHovered, names]); // Added names to dependency array
 
     return (
         <motion.div
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="relative h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#0f1f2e] to-[#050b12] p-8 flex flex-col border border-white/5 group cursor-pointer"
+            className="relative h-full w-full overflow-hidden rounded-3xl bg-[#020617] flex flex-col justify-between group cursor-pointer border border-white/5"
         >
-            <div className="relative z-10 flex justify-between items-start">
-                <div>
-                    <h3 className="text-2xl font-semibold text-white mb-2">
-                        AI document analysis
-                    </h3>
-                    <p className="text-sm text-gray-400">
-                        Reliable AI based security
-                    </p>
-                </div>
-                <div className="bg-white/5 p-3 rounded-2xl border border-white/10 group-hover:bg-primary/20 transition-colors">
-                    <ShieldCheck className="w-6 h-6 text-primary" />
-                </div>
-            </div>
+            <div className="absolute inset-0 z-0">
+                {/* Immersive Phone UI that fills space */}
+                <div className="relative w-full h-full flex items-center justify-center p-4 overflow-hidden">
+                    <motion.div
+                        className="relative h-[95%] aspect-[10/16] md:aspect-[10/16] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden flex flex-col"
+                        animate={isHovered ? { scale: 1.02, y: -5 } : { scale: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        {/* Notch */}
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-800 rounded-b-2xl z-20" />
 
-            <div className="flex-1 flex flex-col items-center justify-center mt-12">
-                <div className="w-full max-w-4xl bg-white/[0.02] rounded-[32px] border-2 border-dashed border-white/10 p-16 flex flex-col items-center gap-6 relative overflow-hidden">
-                    <AnimatePresence mode="wait">
-                        {progress < 100 ? (
+                        {/* Call Screen */}
+                        <div className="flex-1 flex flex-col items-center justify-between p-6 text-center pt-12 pb-8">
                             <motion.div
-                                key="uploading"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                className="flex flex-col items-center gap-6"
+                                animate={isHovered ? {
+                                    scale: [1, 1.05, 1],
+                                    boxShadow: ["0 0 0px rgba(59, 130, 246, 0)", "0 0 30px rgba(59, 130, 246, 0.4)", "0 0 0px rgba(59, 130, 246, 0)"]
+                                } : {}}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center relative"
                             >
+                                <PhoneCall className="w-8 h-8 text-primary" />
+                                <AnimatePresence>
+                                    {isHovered && [1, 2].map((i) => (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ scale: 1, opacity: 0.5 }}
+                                            animate={{ scale: 2, opacity: 0 }}
+                                            transition={{ duration: 2, repeat: Infinity, delay: i }}
+                                            className="absolute inset-0 border border-primary rounded-full pointer-events-none"
+                                        />
+                                    ))}
+                                </AnimatePresence>
+                            </motion.div>
+
+                            <AnimatePresence mode="wait">
                                 <motion.div
-                                    animate={isHovered ? {
-                                        y: [0, -15, 0],
-                                        scale: [1, 1.1, 1]
-                                    } : {}}
-                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                    key={callerName}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="space-y-1"
                                 >
-                                    <UploadCloud className={`w-20 h-20 transition-colors duration-300 ${isHovered ? 'text-primary' : 'text-white/20'}`} />
+                                    <h4 className="text-white text-lg font-medium truncate w-full px-2">{callerName}</h4>
+                                    <p className="text-primary text-[10px] font-medium tracking-widest uppercase animate-pulse">Calling...</p>
                                 </motion.div>
-                                <div className="text-center">
-                                    <p className="text-xl font-medium text-white/80 mb-2">Drag & drop or <span className="text-white hover:underline cursor-pointer">choose files</span></p>
-                                    <p className="text-xs text-white/30 uppercase tracking-[0.2em]">Max file size 20MB</p>
-                                </div>
-                            </motion.div>
-                        ) : (
-                            <motion.div
-                                key="complete"
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1.2, opacity: 1 }}
-                                className="flex flex-col items-center gap-6"
-                            >
-                                <CheckCircle2 className="w-20 h-20 text-emerald-400" />
-                                <div className="text-center">
-                                    <p className="text-xl font-bold text-white mb-2">Analysis Complete</p>
-                                    <p className="text-xs text-emerald-400 font-bold uppercase tracking-widest">Safe & Secure</p>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                            </AnimatePresence>
 
-                    {/* Progress Bar */}
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/5">
-                        <motion.div
-                            className="h-full bg-primary"
-                            initial={{ width: '0%' }}
-                            animate={{ width: `${progress}%` }}
-                        />
-                    </div>
-
-                    {/* Scanning Animation */}
-                    <AnimatePresence>
-                        {isHovered && progress < 100 && (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                className="absolute inset-0 pointer-events-none"
-                            >
-                                <motion.div
-                                    className="absolute inset-0 bg-primary/5"
-                                    animate={{ opacity: [0, 0.5, 0] }}
-                                    transition={{ duration: 1, repeat: Infinity }}
-                                />
-                                {[...Array(3)].map((_, i) => (
-                                    <motion.div
-                                        key={i}
-                                        className="absolute left-0 right-0 h-[1px] bg-primary/30"
-                                        animate={{ top: ['0%', '100%'] }}
-                                        transition={{ duration: 2, repeat: Infinity, delay: i * 0.6 }}
-                                    />
+                            {/* Call Controls */}
+                            <div className="grid grid-cols-3 gap-3 w-full max-w-[180px]">
+                                {[1, 2, 3, 4, 5, 6].map((i) => (
+                                    <div key={i} className="aspect-square rounded-full bg-white/5 flex items-center justify-center">
+                                        <div className="w-1.5 h-1.5 bg-white/20 rounded-full" />
+                                    </div>
                                 ))}
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                            </div>
+
+                            {/* End Call Button */}
+                            <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center shadow-lg shadow-red-500/20 mt-2">
+                                <Phone className="w-6 h-6 text-white rotate-[135deg]" />
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
 
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            {/* Overlay Header */}
+            <div className="relative z-10 p-8 pt-10 text-center md:text-left pointer-events-none">
+                <h3 className="text-2xl font-semibold text-white mb-2 leading-tight">
+                    AI calling assistant
+                </h3>
+                <p className="text-sm text-gray-400 max-w-[240px] mx-auto md:mx-0">
+                    Your autonomous voice engine
+                </p>
+            </div>
+
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-primary/20 transition-colors duration-500" />
+        </motion.div>
+    );
+};
+
+export const SEOGEOCard = () => {
+    const [isHovered, setIsHovered] = useState(false);
+    const [view, setView] = useState<'google' | 'ai'>('google');
+    const [searchText, setSearchText] = useState("");
+    const [aiText, setAiText] = useState("");
+
+    const googleTarget = "real estate solutions";
+    const aiTarget = "give some solutions regarding real estate";
+
+    React.useEffect(() => {
+        let cycleInterval: any;
+        let typingInterval: any;
+
+        if (isHovered) {
+            cycleInterval = setInterval(() => {
+                setView(prev => {
+                    const next = prev === 'google' ? 'ai' : 'google';
+                    setSearchText("");
+                    setAiText("");
+                    return next;
+                });
+            }, 2000);
+
+            // Typing logic
+            typingInterval = setInterval(() => {
+                if (view === 'google') {
+                    if (searchText.length < googleTarget.length) {
+                        setSearchText(googleTarget.slice(0, searchText.length + 1));
+                    }
+                } else {
+                    if (aiText.length < aiTarget.length) {
+                        setAiText(aiTarget.slice(0, aiText.length + 1));
+                    }
+                }
+            }, 50);
+        } else {
+            setView('google');
+            setSearchText("");
+            setAiText("");
+        }
+
+        return () => {
+            clearInterval(cycleInterval);
+            clearInterval(typingInterval);
+        };
+    }, [isHovered, view, searchText.length, aiText.length]);
+
+    return (
+        <motion.div
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
+            className="relative h-full w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-white/5 p-8 flex flex-col group cursor-pointer shadow-2xl transition-all duration-500"
+        >
+            <div className="relative z-10 mb-8">
+                <div className="flex items-center gap-2 mb-2">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Search className="w-4 h-4 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-white leading-tight">
+                        AI SEO & GEO Friendly
+                    </h3>
+                </div>
+                <p className="text-sm text-gray-400 max-w-[300px]">
+                    Maximize your reach where modern clients find homes.
+                </p>
+            </div>
+
+            <div className="relative flex-1 bg-black/40 rounded-2xl border border-white/5 overflow-hidden flex flex-col">
+                <AnimatePresence mode="wait">
+                    {view === 'google' ? (
+                        <motion.div
+                            key="google"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className="flex-1 p-6"
+                        >
+                            {/* Google Search UI */}
+                            <div className="flex items-center gap-3 mb-6 bg-white/5 rounded-full px-4 py-2 border border-white/10 shadow-inner">
+                                <Search className="w-3.5 h-3.5 text-primary" />
+                                <div className="text-xs text-white/90 font-medium">
+                                    {searchText}
+                                    <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }}>|</motion.span>
+                                </div>
+                            </div>
+
+                            <AnimatePresence>
+                                {searchText === googleTarget && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="space-y-4"
+                                    >
+                                        {/* Result 1 - Ours */}
+                                        <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 shadow-[0_0_20px_rgba(var(--primary),0.1)] text-left">
+                                            <div className="text-sm font-bold text-background mb-2 underline decoration-primary underline-offset-4">Top Real Estate AI Solutions | RealtyGenie</div>
+                                            <div className="text-[10px] text-background font-medium mb-1">https://realtygenie.co</div>
+                                            <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                                <motion.div initial={{ width: 0 }} animate={{ width: "100%" }} className="h-full bg-primary/40" />
+                                            </div>
+                                        </div>
+
+                                        {/* Result 2 & 3 - Skeletons */}
+                                        {[1, 2].map(i => (
+                                            <div key={i} className="px-4 py-2 opacity-30">
+                                                <div className="w-32 h-2 bg-white/10 rounded mb-2" />
+                                                <div className="w-full h-1 bg-white/5 rounded" />
+                                                <div className="w-4/5 h-1 bg-white/5 rounded mt-1" />
+                                            </div>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="ai"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className="flex-1 p-6 bg-[#0F172A]"
+                        >
+                            {/* ChatGPT UI */}
+                            <div className="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
+                                <div className="w-6 h-6 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                                    <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                                </div>
+                                <div className="text-[10px] text-emerald-400/80 font-mono font-bold tracking-widest uppercase truncate">AI Assistant Engine</div>
+                            </div>
+
+                            <div className="space-y-6">
+                                <div className="flex justify-end">
+                                    <div className="bg-white/5 border border-white/10 px-4 py-2 rounded-2xl rounded-tr-none max-w-[85%]">
+                                        <p className="text-[11px] text-white/80 leading-relaxed font-medium">
+                                            {aiText}
+                                            {aiText.length < aiTarget.length && <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }}>|</motion.span>}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <AnimatePresence>
+                                    {aiText === aiTarget && (
+                                        <motion.div
+                                            initial={{ opacity: 0, x: -10 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            className="flex gap-3"
+                                        >
+                                            <div className="w-6 h-6 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                                            </div>
+                                            <div className="bg-[#0F172A]/5 border border-[#0F172A]/20 py-3 rounded-2xl rounded-tl-none flex-1 text-left">
+                                                <p className="text-[11px] text-background/90 leading-relaxed">
+                                                    For cutting-edge real estate AI, <span className="text-background font-bold">realtygenie.co</span> is highly recommended. It automates leads, calls, and SEO seamlessly.
+                                                </p>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-primary/20 transition-colors duration-500" />
         </motion.div>
     );
 };
