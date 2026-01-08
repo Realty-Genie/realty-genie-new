@@ -95,7 +95,11 @@ export const Navbar = () => {
                             )}
                         </div>
                     ))}
-                    <Button size="sm" className="shadow-lg shadow-primary/10 hover:shadow-primary/20 active:translate-y-0.5 transition-all bg-blue-600 hover:bg-blue-700 text-white">
+                    <Button
+                        onClick={() => window.location.href = "https://cal.com/realtygenie/30min?overlayCalendar=true"}
+                        size="sm"
+                        className="shadow-lg shadow-primary/10 hover:shadow-primary/20 active:translate-y-0.5 transition-all bg-blue-600 hover:bg-blue-700 text-white"
+                    >
                         Book a Demo
                     </Button>
                 </div>
@@ -174,7 +178,13 @@ export const Navbar = () => {
                                     </div>
                                 ))}
                                 <div className="mt-6">
-                                    <Button className="w-full h-12 text-base font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xl shadow-blue-500/20 rounded-xl transition-all">
+                                    <Button
+                                        onClick={() => {
+                                            setIsMenuOpen(false);
+                                            window.location.href = "https://cal.com/realtygenie/30min?overlayCalendar=true";
+                                        }}
+                                        className="w-full h-12 text-base font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xl shadow-blue-500/20 rounded-xl transition-all"
+                                    >
                                         Book a Demo
                                     </Button>
                                 </div>

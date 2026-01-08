@@ -145,7 +145,11 @@ export default function LandingPage() {
                   Join modern realtors who are closing more deals with less effort.
                 </p>
                 <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="h-14 px-10 text-base bg-white text-[#0f172a] hover:bg-white/90 font-semibold border-0">
+                  <Button
+                    onClick={() => window.location.href = "https://cal.com/realtygenie/30min?overlayCalendar=true"}
+                    size="lg"
+                    className="h-14 px-10 text-base bg-white text-[#0f172a] hover:bg-white/90 font-semibold border-0"
+                  >
                     Book a Demo
                   </Button>
                 </div>

@@ -18,7 +18,7 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const [messages, setMessage] = useState<Array<Message>>([{
     type: MessageType.Receiver,
-    content: "Hello! How can I help you today?"
+    content: "Hello! I'm Anna from RealtyGenie. How can I help you today?"
   }])
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -174,7 +174,7 @@ const Chatbot = () => {
               >
                 <input
                   type="text"
-                  placeholder="Ask about listings, neighborhood, or Denise's services..."
+                  placeholder="Ask us about our services..."
                   className="w-full bg-muted/50 border border-border rounded-xl py-3.5 pl-4 pr-14 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all placeholder:text-muted-foreground/50"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
