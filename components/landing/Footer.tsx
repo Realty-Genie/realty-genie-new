@@ -91,7 +91,7 @@ export const Footer = () => {
                             ))}
                         </ul>
                         <div>
-                            <ul className="space-y-4">
+                            <ul className="space-y-4 pt-4">
                                 <li>
                                     <span className="text-slate-500 hover:text-blue-600 font-medium transition-colors">
                                         +1 (778) 792 2220
@@ -108,7 +108,7 @@ export const Footer = () => {
                 </div>
 
                 <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <p className="text-sm text-slate-400 font-medium italic uppercase tracking-wider">
+                    <p className="text-sm text-slate-400 font-medium italic uppercase tracking-wider font-outfit">
                         © {currentYear} RealtyGenie — Built for the future of real estate.
                     </p>
                 </div>
