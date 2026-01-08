@@ -95,7 +95,7 @@ export const Navbar = () => {
                             )}
                         </div>
                     ))}
-                    <Button size="sm" className="shadow-lg shadow-primary/10 hover:shadow-primary/20 active:translate-y-0.5 transition-all">
+                    <Button size="sm" className="shadow-lg shadow-primary/10 hover:shadow-primary/20 active:translate-y-0.5 transition-all bg-blue-600 hover:bg-blue-700 text-white">
                         Book a Demo
                     </Button>
                 </div>

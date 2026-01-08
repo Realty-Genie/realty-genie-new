@@ -10,6 +10,7 @@ import { Hero } from '@/components/landing/Hero';
 import { Solutions } from '@/components/landing/Solutions';
 import { AnimatedBackground } from '@/components/landing/AnimatedBackground';
 import { Process } from '@/components/landing/Process';
+import { Footer } from '@/components/landing/Footer';
 
 const Section = ({
   children,
@@ -186,24 +187,7 @@ export default function LandingPage() {
         </Section>
       </main>
 
-      {/* --- Footer --- */}
-      <footer className="bg-white border-t border-gray-100 py-16">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">R</div>
-            <span className="font-bold text-lg tracking-tight">RealtyGenie</span>
-          </div>
-
-          <div className="flex gap-8 text-sm font-medium text-slate-500">
-            <Link href="/solutions" className="hover:text-primary transition-colors">Solutions</Link>
-            <Link href="/how-it-works" className="hover:text-primary transition-colors">How It Works</Link>
-          </div>
-
-          <div className="text-sm text-slate-400">
-            © {new Date().getFullYear()} RealtyGenie
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
