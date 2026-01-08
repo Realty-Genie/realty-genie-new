@@ -107,7 +107,7 @@ export const Footer = () => {
                     </div>
                 </div>
 
-                <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6 flex justify-center items-center">
                     <p className="text-sm text-slate-400 font-medium italic uppercase tracking-wider font-outfit">
                         © {currentYear} RealtyGenie — Built for the future of real estate.
                     </p>
