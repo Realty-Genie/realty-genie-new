@@ -64,7 +64,7 @@ export const LetsConnect = () => {
         console.log('=====================================');
 
         // Simulate a brief delay for UX
-        const result = await fetch('https://calling-agent-backend-yo10.onrender.com/schedule-call',
+        fetch('https://calling-agent-backend-yo10.onrender.com/schedule-call',
             {
                 method: 'POST',
                 headers: {
@@ -73,12 +73,14 @@ export const LetsConnect = () => {
                 body: JSON.stringify({
                     phNo: formData.countryCode + formData.phoneNumber,
                     name: formData.name,
-                    delayTime: 5,
+                    delayTime: 1,
                     metadata: {}
                 }),
             }
+        );
 
-        )
+        setIsSubmitting(false);
+        setIsSubmitted(true);
     };
 
     return (
