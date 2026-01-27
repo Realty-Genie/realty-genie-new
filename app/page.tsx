@@ -9,6 +9,7 @@ import { Navbar } from '@/components/landing/Navbar';
 import { Hero } from '@/components/landing/Hero';
 import { Process } from '@/components/landing/Process';
 import { Footer } from '@/components/landing/Footer';
+import { LetsConnect } from '@/components/landing/LetsConnect';
 
 const Section = ({
   children,
@@ -135,28 +136,8 @@ export default function LandingPage() {
           </FadeIn>
         </Section>
 
-        {/* --- Final CTA --- */}
-        <Section className="pb-32">
-          <FadeIn>
-            <div className="bg-[#0f172a] rounded-[2rem] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl">
-              <div className="relative z-10 space-y-8 max-w-3xl mx-auto">
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Ready to reclaim your time?</h2>
-                <p className="text-lg md:text-xl text-slate-300">
-                  Join modern realtors who are closing more deals with less effort.
-                </p>
-                <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    onClick={() => window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank")}
-                    size="lg"
-                    className="h-14 px-10 text-base bg-white text-[#0f172a] hover:bg-white/90 font-semibold border-0"
-                  >
-                    Book a Demo
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </Section>
+        {/* --- Let's Connect Section --- */}
+        <LetsConnect />
       </main>
 
       <Footer />
