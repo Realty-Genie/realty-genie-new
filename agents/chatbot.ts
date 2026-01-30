@@ -7,6 +7,7 @@ const guardrailAgent = new Agent({
 Your ONLY job is to determine if the user's input is related to:
 1. Real Estate (buying, selling, investing, property management).
 2. RealtyGenie platform (features, modules, demo, how it works).
+greeting are welcome. Allow general talkings about realtygenie.
 
 If the input is unrelated (e.g., math, coding, cooking, general knowledge, or other industries), set 'isOffTopic' to true.
 Otherwise, set 'isOffTopic' to false.`,
