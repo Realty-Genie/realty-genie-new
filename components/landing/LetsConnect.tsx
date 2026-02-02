@@ -13,29 +13,29 @@ interface FormData {
 }
 
 const countryCodes = [
-    { code: '+1', country: 'US', flag: '🇺🇸' },
-    { code: '+1', country: 'CA', flag: '🇨🇦' },
-    { code: '+44', country: 'UK', flag: '🇬🇧' },
-    { code: '+91', country: 'IN', flag: '🇮🇳' },
-    { code: '+61', country: 'AU', flag: '🇦🇺' },
-    { code: '+971', country: 'UAE', flag: '🇦🇪' },
-    { code: '+65', country: 'SG', flag: '🇸🇬' },
-    { code: '+852', country: 'HK', flag: '🇭🇰' },
-    { code: '+49', country: 'DE', flag: '🇩🇪' },
-    { code: '+33', country: 'FR', flag: '🇫🇷' },
-    { code: '+81', country: 'JP', flag: '🇯🇵' },
-    { code: '+86', country: 'CN', flag: '🇨🇳' },
-    { code: '+55', country: 'BR', flag: '🇧🇷' },
-    { code: '+52', country: 'MX', flag: '🇲🇽' },
-    { code: '+27', country: 'ZA', flag: '🇿🇦' },
-    { code: '+234', country: 'NG', flag: '🇳🇬' },
+    { code: '+1', country: 'US', flag: '🇺🇸', id: '+1-US' },
+    { code: '+1', country: 'CA', flag: '🇨🇦', id: '+1-CA' },
+    { code: '+44', country: 'UK', flag: '🇬🇧', id: '+44-UK' },
+    { code: '+91', country: 'IN', flag: '🇮🇳', id: '+91-IN' },
+    { code: '+61', country: 'AU', flag: '🇦🇺', id: '+61-AU' },
+    { code: '+971', country: 'UAE', flag: '🇦🇪', id: '+971-UAE' },
+    { code: '+65', country: 'SG', flag: '🇸🇬', id: '+65-SG' },
+    { code: '+852', country: 'HK', flag: '🇭🇰', id: '+852-HK' },
+    { code: '+49', country: 'DE', flag: '🇩🇪', id: '+49-DE' },
+    { code: '+33', country: 'FR', flag: '🇫🇷', id: '+33-FR' },
+    { code: '+81', country: 'JP', flag: '🇯🇵', id: '+81-JP' },
+    { code: '+86', country: 'CN', flag: '🇨🇳', id: '+86-CN' },
+    { code: '+55', country: 'BR', flag: '🇧🇷', id: '+55-BR' },
+    { code: '+52', country: 'MX', flag: '🇲🇽', id: '+52-MX' },
+    { code: '+27', country: 'ZA', flag: '🇿🇦', id: '+27-ZA' },
+    { code: '+234', country: 'NG', flag: '🇳🇬', id: '+234-NG' },
 ];
 
 export const LetsConnect = () => {
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
-        countryCode: '+1',
+        countryCode: '+1-US',
         phoneNumber: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,7 +59,7 @@ export const LetsConnect = () => {
         console.log('Email:', formData.email);
         console.log('Country Code:', formData.countryCode);
         console.log('Phone Number:', formData.phoneNumber);
-        console.log('Full Phone:', formData.countryCode + ' ' + formData.phoneNumber);
+        console.log('Full Phone:', formData.countryCode.split('-')[0] + ' ' + formData.phoneNumber);
         console.log('Full Form Data:', formData);
         console.log('=====================================');
 
@@ -71,7 +71,7 @@ export const LetsConnect = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    phNo: formData.countryCode + formData.phoneNumber,
+                    phNo: formData.countryCode.split('-')[0] + formData.phoneNumber,
                     name: formData.name,
                     delayTime: 1,
                     metadata: {}
@@ -203,7 +203,7 @@ export const LetsConnect = () => {
                                                 style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%2394a3b8\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 8px center', backgroundSize: '16px' }}
                                             >
                                                 {countryCodes.map((country) => (
-                                                    <option key={country.country} value={country.code} className="bg-slate-800 text-white">
+                                                    <option key={country.id} value={country.id} className="bg-slate-800 text-white">
                                                         {country.flag} {country.code}
                                                     </option>
                                                 ))}

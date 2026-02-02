@@ -1,11 +1,15 @@
 'use client';
 
+import { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronRight, PlayCircle } from 'lucide-react';
 import { BentoGrid } from './BentoGrid';
+import { MdWifiCalling1 } from 'react-icons/md';
+import { TryCallgenieModal } from './TryCallgenieModal';
 
 export const Hero = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const container: Variants = {
         hidden: { opacity: 0 },
         show: {
@@ -75,6 +79,15 @@ export const Hero = () => {
                     >
                         Get started
                     </Button>
+                    <Button
+                        variant="outline"
+                        onClick={() => setIsModalOpen(true)}
+                        className="w-full sm:w-auto h-12 px-8 text-base font-semibold rounded-lg border-blue-200 hover:bg-blue-50 text-blue-600 gap-2 transition-all duration-300"
+                    >
+                        <MdWifiCalling1 className="w-5 h-5" />
+                        Try Callgenie
+                    </Button>
+
                     <Button variant="ghost" className="w-full sm:w-auto h-12 px-4 text-base font-medium text-muted-foreground hover:text-foreground gap-2 group">
                         See how it works
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -84,6 +97,9 @@ export const Hero = () => {
                 {/* Bento Grid Features */}
                 <BentoGrid />
             </div>
+
+            {/* Try Callgenie Modal */}
+            <TryCallgenieModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </section>
     );
 }
