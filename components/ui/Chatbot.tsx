@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ReactMarkdown from 'react-markdown';
 
 export enum MessageType {
   Sender = "sender",
@@ -143,13 +144,17 @@ const Chatbot = () => {
                 >
                   <div
                     className={cn(
-                      "px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-sm transition-all whitespace-pre-wrap",
+                      "px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-sm transition-all",
                       msg.type === "sender"
                         ? "bg-primary text-primary-foreground rounded-tr-none font-medium"
-                        : "bg-muted/50 text-foreground rounded-tl-none border border-border backdrop-blur-sm"
+                        : "bg-muted/50 text-foreground rounded-tl-none border border-border backdrop-blur-sm prose prose-sm max-w-none dark:prose-invert prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0 break-words"
                     )}
                   >
-                    {msg.content}
+                    {msg.type === "sender" ? (
+                      msg.content
+                    ) : (
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                    )}
                   </div>
                 </div>
               ))}
