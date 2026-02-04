@@ -78,7 +78,7 @@ export const Hero = () => {
                         >
                             Get started
                         </Button>
-                        <TryCallgenieButton />
+
 
                         <Button variant="ghost" className="w-full sm:w-auto h-12 px-4 text-base font-medium text-muted-foreground hover:text-foreground gap-2 group">
                             See how it works
