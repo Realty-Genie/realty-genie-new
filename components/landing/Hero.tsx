@@ -1,17 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronRight, Phone, PlayCircle } from 'lucide-react';
 import { BentoGrid } from './BentoGrid';
 import { MdWifiCalling1 } from 'react-icons/md';
-import { TryCallgenieModal } from './TryCallgenieModal';
 import { TryCallgenieButton } from './TryCallgenieButton';
 
 export const Hero = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isCallgenieModalOpen, setIsCallgenieModalOpen] = useState(false);
     const container: Variants = {
         hidden: { opacity: 0 },
         show: {
@@ -82,7 +78,7 @@ export const Hero = () => {
                         >
                             Get started
                         </Button>
-                        <TryCallgenieButton onClick={() => setIsCallgenieModalOpen(true)} />
+                        <TryCallgenieButton />
 
                         <Button variant="ghost" className="w-full sm:w-auto h-12 px-4 text-base font-medium text-muted-foreground hover:text-foreground gap-2 group">
                             See how it works
@@ -94,9 +90,6 @@ export const Hero = () => {
                     <BentoGrid />
                 </div>
             </section>
-
-            {/* Try Callgenie Modal - Outside section to avoid overflow-hidden clipping */}
-            <TryCallgenieModal isOpen={isCallgenieModalOpen} onClose={() => setIsCallgenieModalOpen(false)} />
         </>
     );
 }

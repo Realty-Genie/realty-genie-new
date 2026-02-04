@@ -5,14 +5,13 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { TryCallgenieModal } from './TryCallgenieModal';
 import { TryCallgenieButton } from './TryCallgenieButton';
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [isCallgenieModalOpen, setIsCallgenieModalOpen] = useState(false);
+
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -108,7 +107,7 @@ export const Navbar = () => {
                         Book a Demo
                     </Button>
 
-                    <TryCallgenieButton onClick={() => setIsCallgenieModalOpen(true)} />
+                    <TryCallgenieButton />
                 </div>
 
                 {/* Mobile Toggle */}
@@ -196,10 +195,6 @@ export const Navbar = () => {
                                         Book a Demo
                                     </Button>
                                     <TryCallgenieButton
-                                        onClick={() => {
-                                            setIsMenuOpen(false);
-                                            setIsCallgenieModalOpen(true);
-                                        }}
                                         className="w-full justify-center"
                                     />
                                 </div>
@@ -208,9 +203,6 @@ export const Navbar = () => {
                     </>
                 )}
             </AnimatePresence>
-
-            {/* Try Callgenie Modal */}
-            <TryCallgenieModal isOpen={isCallgenieModalOpen} onClose={() => setIsCallgenieModalOpen(false)} />
         </nav>
     );
 };

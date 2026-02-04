@@ -5,14 +5,15 @@ import { motion } from 'framer-motion';
 import { Phone } from 'lucide-react';
 
 interface TryCallgenieButtonProps {
-    onClick: () => void;
     className?: string;
 }
 
-export const TryCallgenieButton: React.FC<TryCallgenieButtonProps> = ({ onClick, className = '' }) => {
+export const TryCallgenieButton: React.FC<TryCallgenieButtonProps> = ({ className = '' }) => {
     return (
-        <button
-            onClick={onClick}
+        <a
+            href="https://callgenie.realtygenie.co"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`relative group flex items-center gap-2 h-11 bg-gradient-to-br from-blue-600 via-indigo-500 to-violet-600 hover:from-blue-500 hover:to-violet-500 text-white rounded-lg pl-3 pr-1.5 shadow-[0_10px_30px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_20px_40px_-10px_rgba(124,58,237,0.6)] transition-all duration-500 overflow-hidden border border-white/20 hover:-translate-y-1 active:scale-95 ${className}`}
         >
             {/* Shine animation */}
@@ -41,6 +42,6 @@ export const TryCallgenieButton: React.FC<TryCallgenieButtonProps> = ({ onClick,
                     LIVE
                 </span>
             </div>
-        </button>
+        </a>
     );
 };
