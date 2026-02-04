@@ -3,13 +3,16 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { TryCallgenieModal } from './TryCallgenieModal';
+import { TryCallgenieButton } from './TryCallgenieButton';
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isCallgenieModalOpen, setIsCallgenieModalOpen] = useState(false);
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -95,13 +98,17 @@ export const Navbar = () => {
                             )}
                         </div>
                     ))}
+
                     <Button
                         onClick={() => window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank")}
                         size="sm"
-                        className="shadow-lg shadow-primary/10 hover:shadow-primary/20 active:translate-y-0.5 transition-all bg-blue-600 hover:bg-blue-700 text-white"
+                        variant="outline"
+                        className="h-12 px-2.5 text-base border-blue-200 hover:bg-blue-50 text-blue-600 transition-all"
                     >
                         Book a Demo
                     </Button>
+
+                    <TryCallgenieButton onClick={() => setIsCallgenieModalOpen(true)} />
                 </div>
 
                 {/* Mobile Toggle */}
@@ -177,22 +184,33 @@ export const Navbar = () => {
                                         )}
                                     </div>
                                 ))}
-                                <div className="mt-6">
+                                <div className="mt-6 flex flex-col gap-3">
                                     <Button
                                         onClick={() => {
                                             setIsMenuOpen(false);
                                             window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank");
                                         }}
-                                        className="w-full h-12 text-base font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xl shadow-blue-500/20 rounded-xl transition-all"
+                                        variant="outline"
+                                        className="w-full h-15 text-base font-bold border-blue-200 text-blue-600 hover:bg-blue-50 rounded-xl transition-all"
                                     >
                                         Book a Demo
                                     </Button>
+                                    <TryCallgenieButton
+                                        onClick={() => {
+                                            setIsMenuOpen(false);
+                                            setIsCallgenieModalOpen(true);
+                                        }}
+                                        className="w-full justify-center"
+                                    />
                                 </div>
                             </div>
                         </motion.div>
                     </>
                 )}
             </AnimatePresence>
+
+            {/* Try Callgenie Modal */}
+            <TryCallgenieModal isOpen={isCallgenieModalOpen} onClose={() => setIsCallgenieModalOpen(false)} />
         </nav>
     );
 };

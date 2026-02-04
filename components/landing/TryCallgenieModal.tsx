@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Phone, Loader2, CheckCircle, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -36,14 +37,21 @@ interface TryCallgenieModalProps {
 }
 
 export const TryCallgenieModal: React.FC<TryCallgenieModalProps> = ({ isOpen, onClose }) => {
+    const [mounted, setMounted] = useState(false);
     const [formData, setFormData] = useState<FormData>({
         name: '',
-        countryCode: '+1-CA',
+        countryCode: '+1-US',
         phoneNumber: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    // Handle mounting for portal
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -93,7 +101,10 @@ export const TryCallgenieModal: React.FC<TryCallgenieModalProps> = ({ isOpen, on
         onClose();
     };
 
-    return (
+    // Don't render on server
+    if (!mounted) return null;
+
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <>
@@ -103,7 +114,7 @@ export const TryCallgenieModal: React.FC<TryCallgenieModalProps> = ({ isOpen, on
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={handleClose}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999]"
                     />
 
                     {/* Modal */}
@@ -112,7 +123,7 @@ export const TryCallgenieModal: React.FC<TryCallgenieModalProps> = ({ isOpen, on
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ type: "spring", duration: 0.5 }}
-                        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md mx-4"
+                        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999] w-full max-w-md mx-4"
                     >
                         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] p-[1px]">
                             {/* Gradient border effect */}
@@ -271,6 +282,7 @@ export const TryCallgenieModal: React.FC<TryCallgenieModalProps> = ({ isOpen, on
                     </motion.div>
                 </>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     );
 };
