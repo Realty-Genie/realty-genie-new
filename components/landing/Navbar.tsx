@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { TryCallgenieButton } from './TryCallgenieButton';
+import { BookConsultButton } from './BookConsultButton';
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -98,14 +99,7 @@ export const Navbar = () => {
                         </div>
                     ))}
 
-                    <Button
-                        onClick={() => window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank")}
-                        size="sm"
-                        variant="outline"
-                        className="h-12 px-2.5 text-base border-blue-200 hover:bg-blue-50 text-blue-600 transition-all"
-                    >
-                        Book a Demo
-                    </Button>
+                    <BookConsultButton />
 
                     <TryCallgenieButton />
                 </div>
@@ -184,16 +178,13 @@ export const Navbar = () => {
                                     </div>
                                 ))}
                                 <div className="mt-6 flex flex-col gap-3">
-                                    <Button
+                                    <BookConsultButton
+                                        className="w-full"
                                         onClick={() => {
                                             setIsMenuOpen(false);
                                             window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank");
                                         }}
-                                        variant="outline"
-                                        className="w-full h-15 text-base font-bold border-blue-200 text-blue-600 hover:bg-blue-50 rounded-xl transition-all"
-                                    >
-                                        Book a Demo
-                                    </Button>
+                                    />
                                     <TryCallgenieButton
                                         className="w-full justify-center"
                                     />

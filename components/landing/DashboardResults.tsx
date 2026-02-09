@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, TrendingUp, Users, Clock, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { BookConsultButton } from './BookConsultButton';
 
 const ResultItem = ({ title, delay, icon: Icon, iconColor }: { title: string; delay: number; icon: any; iconColor: string }) => (
     <motion.div
@@ -72,9 +73,7 @@ export const DashboardResults = () => {
                                 Get a personalized demo of the AI Dashboard and see how elite teams are winning with RealtyGenie.
                             </p>
                             <div className="pt-4">
-                                <Button size="lg" className="h-14 px-10 text-lg bg-white text-[#0F172A] hover:bg-white/90 font-bold rounded-xl transition-all duration-300">
-                                    Book Your Team Demo <ArrowRight className="ml-2 w-5 h-5" />
-                                </Button>
+                                <BookConsultButton className="h-14 px-10 text-lg" />
                             </div>
                         </div>
                     </div>
