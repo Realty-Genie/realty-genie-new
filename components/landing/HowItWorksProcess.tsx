@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { BookConsultButton } from './BookConsultButton';
 
 const ProcessStep = ({
     number,
@@ -209,10 +210,8 @@ export const HowItWorksProcess = () => {
                             <p className="text-lg text-slate-300 font-medium">
                                 Start with Step 1. Let's find exactly where your team is losing time and how AI can give it back.
                             </p>
-                            <div className="pt-4">
-                                <Button size="lg" className="h-14 px-10 text-lg bg-white text-[#0F172A] hover:bg-white/90 font-bold rounded-xl transition-all duration-300">
-                                    Book Your Audit Session <ArrowRight className="ml-2 w-5 h-5" />
-                                </Button>
+                            <div className="pt-4 flex justify-center">
+                                <BookConsultButton className="h-14 px-10 text-lg" />
                             </div>
                         </div>
                     </div>
