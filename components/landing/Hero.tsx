@@ -6,6 +6,7 @@ import { ArrowRight, ChevronRight, Phone, PlayCircle } from 'lucide-react';
 import { BentoGrid } from './BentoGrid';
 import { MdWifiCalling1 } from 'react-icons/md';
 import { TryCallgenieButton } from './TryCallgenieButton';
+import Link from 'next/link';
 
 export const Hero = () => {
     const container: Variants = {
@@ -80,10 +81,13 @@ export const Hero = () => {
                         </Button>
 
 
-                        <Button variant="ghost" className="w-full sm:w-auto h-12 px-4 text-base font-medium text-muted-foreground hover:text-foreground gap-2 group">
-                            See how it works
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
+
+                        <Link href="/how-it-works">
+                            <Button variant="ghost" className="w-full sm:w-auto h-12 px-4 text-base font-medium text-muted-foreground hover:text-foreground gap-2 group">
+                                See how it works
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                        </Link>
                     </motion.div>
 
                     {/* Bento Grid Features */}
