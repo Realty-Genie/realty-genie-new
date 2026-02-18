@@ -30,7 +30,7 @@ export const BookConsultButton: React.FC<BookConsultButtonProps> = ({
             onClick={handleClick}
             className={`
                 relative overflow-hidden
-                h-12 px-5 rounded-full
+                h-12 px-5 rounded-lg
                 text-white font-medium text-base
                 transition-all duration-300 ease-out
                 cursor-pointer

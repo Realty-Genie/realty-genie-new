@@ -104,14 +104,17 @@ export const Navbar = () => {
                     <TryCallgenieButton />
                 </div>
 
-                {/* Mobile Toggle */}
-                <button
-                    className="md:hidden p-2 text-slate-900 focus:outline-none"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    aria-label="Toggle menu"
-                >
-                    {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
+                {/* Mobile: Try Callgenie + Hamburger */}
+                <div className="md:hidden flex items-center gap-1.5">
+                    <TryCallgenieButton />
+                    <button
+                        className="p-2 text-slate-900 focus:outline-none"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu Overlay */}
@@ -184,9 +187,6 @@ export const Navbar = () => {
                                             setIsMenuOpen(false);
                                             window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank");
                                         }}
-                                    />
-                                    <TryCallgenieButton
-                                        className="w-full justify-center"
                                     />
                                 </div>
                             </div>
