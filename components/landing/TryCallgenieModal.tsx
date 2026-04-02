@@ -60,6 +60,19 @@ export const TryCallgenieModal: React.FC<TryCallgenieModalProps> = ({ isOpen, on
         setLoading(true);
         setStatus(null);
 
+        // CRM Tracker: identify user and track form submission
+        if (typeof window !== "undefined" && window.crmTracker) {
+            if (email) {
+                window.crmTracker.identify(email.trim().toLowerCase(), name);
+            }
+            const agentName = DEMO_AGENTS.find(a => a.id === selectedAgentId)?.name || "unknown";
+            window.crmTracker.track("form_submit", {
+                formId: "try_callgenie",
+                agent_name: agentName,
+                emailCaptured: !!email,
+            });
+        }
+
         try {
             await api.post('/demo/createCall', {
                 retellAgentId: selectedAgentId,

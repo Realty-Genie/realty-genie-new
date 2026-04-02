@@ -63,6 +63,17 @@ export const LetsConnect = () => {
         console.log('Full Form Data:', formData);
         console.log('=====================================');
 
+        // CRM Tracker: identify user and track form submission
+        if (typeof window !== "undefined" && window.crmTracker) {
+            if (formData.email) {
+                window.crmTracker.identify(formData.email.trim().toLowerCase(), formData.name);
+            }
+            window.crmTracker.track("form_submit", {
+                formId: "lets_connect",
+                emailCaptured: true,
+            });
+        }
+
         // Simulate a brief delay for UX
         fetch('https://calling-agent-backend-yo10.onrender.com/schedule-call',
             {
