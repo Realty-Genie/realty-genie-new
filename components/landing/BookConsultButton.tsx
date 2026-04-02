@@ -63,29 +63,15 @@ export const BookConsultButton: React.FC<BookConsultButtonProps> = ({
             whileTap={{ scale: 0.98 }}
         >
             <motion.span
-                initial={false}
-                animate={{
-                    opacity: isHovered ? 0 : 1,
-                    y: isHovered ? -20 : 0,
-                }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
                 className="flex items-center gap-2 whitespace-nowrap"
             >
                 Book A Consult
-                <ArrowRight className="w-4 h-4" />
-            </motion.span>
-
-            <motion.span
-                initial={false}
-                animate={{
-                    opacity: isHovered ? 1 : 0,
-                    y: isHovered ? 0 : 20,
-                }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
-                className="absolute inset-0 flex items-center justify-center gap-2 whitespace-nowrap"
-            >
-                It's literally free
-                <ArrowRight className="w-4 h-4" />
+                <motion.span
+                    animate={{ x: isHovered ? 4 : 0 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <ArrowRight className="w-4 h-4" />
+                </motion.span>
             </motion.span>
         </motion.button>
     );
