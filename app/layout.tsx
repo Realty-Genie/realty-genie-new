@@ -35,6 +35,39 @@ export default function RootLayout({
         <Whatsapp />
         <Chatbot />
         <Script
+          id="tracker-click-filter"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener("click", function(e) {
+                var el = e.target;
+                var tag = (el.tagName || "").toUpperCase();
+                // Block form inputs from being captured by tracker auto-click
+                if (tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA" || tag === "OPTION") {
+                  e.stopPropagation();
+                  return;
+                }
+                // Block non-submit clicks inside forms
+                if (el.closest && el.closest("form")) {
+                  var isSubmitBtn = false;
+                  var check = el;
+                  for (var i = 0; i < 5 && check && check !== document.body; i++) {
+                    var t = (check.tagName || "").toUpperCase();
+                    if ((t === "BUTTON" && check.type === "submit") || (t === "INPUT" && check.type === "submit")) {
+                      isSubmitBtn = true;
+                      break;
+                    }
+                    check = check.parentElement;
+                  }
+                  if (!isSubmitBtn) {
+                    e.stopPropagation();
+                  }
+                }
+              }, true);
+            `,
+          }}
+        />
+        <Script
           src="https://tracker-worker.green-feather-9c2c.workers.dev/tracker.js"
           data-key="2ae44d4e-f06a-45a5-be38-9cb01bdb0da1"
           strategy="afterInteractive"
