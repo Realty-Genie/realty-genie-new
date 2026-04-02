@@ -16,6 +16,13 @@ export const BookConsultButton: React.FC<BookConsultButtonProps> = ({
     const [isHovered, setIsHovered] = useState(false);
 
     const handleClick = () => {
+        if (typeof window !== "undefined" && window.crmTracker) {
+            window.crmTracker.track("click", {
+                element: "button",
+                button_text: "Book A Consult",
+            });
+        }
+
         if (onClick) {
             onClick();
         } else {

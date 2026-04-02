@@ -12,10 +12,20 @@ interface TryCallgenieButtonProps {
 export const TryCallgenieButton: React.FC<TryCallgenieButtonProps> = ({ className = '' }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const handleClick = () => {
+        if (typeof window !== "undefined" && window.crmTracker) {
+            window.crmTracker.track("click", {
+                element: "button",
+                button_text: "Try Callgenie",
+            });
+        }
+        setIsModalOpen(true);
+    };
+
     return (
         <>
             <motion.button
-                onClick={() => setIsModalOpen(true)}
+                onClick={handleClick}
                 className={`relative group flex md:m-5 items-center gap-1.5 md:gap-2 h-9 md:h-11 bg-gradient-to-br from-blue-600 via-indigo-500 to-violet-600 hover:from-blue-500 hover:to-violet-500 text-white rounded-lg pl-2.5 md:pl-3 pr-1 md:pr-1.5 shadow-[0_4px_15px_-3px_rgba(37,99,235,0.35)] md:shadow-[0_10px_30px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_20px_40px_-10px_rgba(124,58,237,0.6)] transition-all duration-500 overflow-hidden border border-white/20 hover:-translate-y-1 active:scale-95 ${className}`}
             >
                 {/* Shine animation */}
