@@ -69,8 +69,8 @@ export default function RootLayout({
         />
         <Script
           src="https://tracker-worker.green-feather-9c2c.workers.dev/tracker.js"
-          data-key="2ae44d4e-f06a-45a5-be38-9cb01bdb0da1"
-          strategy="afterInteractive"
+          data-key="82a92d33-2391-48fd-9c64-753e1ba62ae7"
+          defer
         />
       </body>
     </html>
