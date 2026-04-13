@@ -53,7 +53,7 @@ export const CRMShowcase = () => {
     const activeFeature = features.find(f => f.id === active)!;
 
     return (
-        <div className="w-full max-w-6xl mx-auto px-4 pb-24">
+        <div className="w-full max-w-6xl mx-auto px-4 pb-16 sm:pb-24">
             <motion.div
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -64,8 +64,8 @@ export const CRMShowcase = () => {
             >
                 {/* Tab bar */}
                 <div
-                    className="flex items-center bg-white z-10 relative"
-                    style={{ borderBottom: '1.5px solid #000', padding: '12px 20px', gap: '4px' }}
+                    className="relative z-10 grid grid-cols-1 gap-2 bg-white p-3 md:flex md:items-center md:gap-1"
+                    style={{ borderBottom: '1.5px solid #000' }}
                 >
                     {features.map((f) => {
                         const Icon = f.icon;
@@ -74,12 +74,11 @@ export const CRMShowcase = () => {
                             <button
                                 key={f.id}
                                 onClick={() => setActive(f.id)}
-                                className="flex items-center gap-1.5 rounded-lg text-xs font-medium transition-colors duration-150 select-none flex-1 justify-center"
+                                className="flex min-w-0 items-center justify-center gap-1.5 rounded-lg text-left text-[11px] font-medium transition-colors duration-150 select-none md:flex-1 md:text-xs"
                                 style={{
-                                    padding: '8px 12px',
+                                    padding: '10px 12px',
                                     background: isActive ? '#f4f4f5' : 'transparent',
                                     color: isActive ? '#18181b' : '#71717a',
-                                    whiteSpace: 'nowrap',
                                 }}
                             >
                                 <Icon
@@ -87,7 +86,7 @@ export const CRMShowcase = () => {
                                     style={{ color: isActive ? f.accent : '#a1a1aa', flexShrink: 0 }}
                                     strokeWidth={2}
                                 />
-                                {f.label}
+                                <span className="truncate md:whitespace-nowrap">{f.label}</span>
                             </button>
                         );
                     })}
@@ -97,7 +96,7 @@ export const CRMShowcase = () => {
                 <div
                     className="relative w-full overflow-hidden"
                     style={{
-                        height: '520px',
+                        height: 'clamp(260px, 62vw, 520px)',
                         backgroundImage: 'radial-gradient(#d4d4d8 1px, transparent 1px)',
                         backgroundSize: '22px 22px',
                         backgroundColor: '#fafafa',
@@ -111,11 +110,11 @@ export const CRMShowcase = () => {
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.25 }}
                             className="absolute inset-0 flex items-start justify-center"
-                            style={{ padding: '36px 24px 0' }}
+                            style={{ padding: 'clamp(16px, 4vw, 36px) clamp(12px, 3vw, 24px) 0' }}
                         >
                             <div
                                 style={{
-                                    width: '115%',
+                                    width: 'min(118%, 1200px)',
                                     flexShrink: 0,
                                     transform: `rotate(${activeFeature.rotate}) translateX(${activeFeature.offsetX})`,
                                     borderRadius: '10px',
