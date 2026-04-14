@@ -27,6 +27,7 @@ export const Navbar = () => {
             name: 'Solutions',
             href: '#',
             dropdown: [
+                { name: 'RealtyCRM - All in one!!', href: '/solutions/realty-crm', highlighted: true },
                 { name: 'IDX Website & SEO', href: '/solutions/idx-website' },
                 { name: 'AI Calling Assistant', href: '/solutions/calling-assistant' },
                 { name: 'AI Lead Management', href: '/solutions/lead-management' },
@@ -87,9 +88,20 @@ export const Navbar = () => {
                                                 <Link
                                                     key={item.name}
                                                     href={item.href}
-                                                    className="block px-4 py-3 text-sm text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
+                                                    className={`block px-4 py-3 text-sm rounded-lg transition-all ${
+                                                        item.highlighted
+                                                            ? 'relative overflow-hidden bg-gradient-to-br from-amber-400 via-yellow-400 to-orange-400 hover:from-amber-300 hover:to-orange-300 text-amber-950 font-bold shadow-[0_4px_15px_-3px_rgba(251,191,36,0.5)] hover:shadow-[0_8px_25px_-5px_rgba(251,191,36,0.6)] border border-yellow-300/60 hover:-translate-y-0.5'
+                                                            : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
+                                                    }`}
                                                 >
-                                                    {item.name}
+                                                    {item.highlighted && (
+                                                        <motion.span
+                                                            animate={{ x: ['-150%', '300%'] }}
+                                                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 3 }}
+                                                            className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-20 pointer-events-none"
+                                                        />
+                                                    )}
+                                                    <span className="relative">{item.name}</span>
                                                 </Link>
                                             ))}
                                         </motion.div>
@@ -159,10 +171,21 @@ export const Navbar = () => {
                                                                 <Link
                                                                     key={item.name}
                                                                     href={item.href}
-                                                                    className="text-base text-slate-600 py-3 font-medium hover:text-blue-600 transition-colors"
+                                                                    className={`relative overflow-hidden text-base py-3 font-medium transition-all rounded-lg px-3 ${
+                                                                        item.highlighted
+                                                                            ? 'bg-gradient-to-br from-amber-400 via-yellow-400 to-orange-400 text-amber-950 font-bold mt-2 shadow-[0_4px_15px_-3px_rgba(251,191,36,0.5)] border border-yellow-300/60'
+                                                                            : 'text-slate-600 hover:text-blue-600'
+                                                                    }`}
                                                                     onClick={() => setIsMenuOpen(false)}
                                                                 >
-                                                                    {item.name}
+                                                                    {item.highlighted && (
+                                                                        <motion.span
+                                                                            animate={{ x: ['-150%', '300%'] }}
+                                                                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 3 }}
+                                                                            className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-20 pointer-events-none"
+                                                                        />
+                                                                    )}
+                                                                    <span className="relative">{item.name}</span>
                                                                 </Link>
                                                             ))}
                                                         </motion.div>
