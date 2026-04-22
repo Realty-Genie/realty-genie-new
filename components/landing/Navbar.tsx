@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { TryCallgenieButton } from './TryCallgenieButton';
 import { BookConsultButton } from './BookConsultButton';
 
 export const Navbar = () => {
@@ -112,13 +111,11 @@ export const Navbar = () => {
                     ))}
 
                     <BookConsultButton />
-
-                    <TryCallgenieButton />
                 </div>
 
-                {/* Mobile: Try Callgenie + Hamburger */}
+                {/* Mobile: Book Consult + Hamburger */}
                 <div className="md:hidden flex items-center gap-1.5">
-                    <TryCallgenieButton />
+                    <BookConsultButton />
                     <button
                         className="p-2 text-slate-900 focus:outline-none"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}

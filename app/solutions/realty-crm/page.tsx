@@ -101,7 +101,7 @@ function HeroDashboard() {
                 <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
                 <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                <div className="ml-3 text-xs text-slate-400 font-medium">app.realtygenie.ai</div>
+                <div className="ml-3 text-xs text-slate-400 font-medium">realtycrm.realtygenie.co</div>
             </div>
 
             {/* Tabs */}
@@ -353,22 +353,22 @@ export default function RealtyGenieCRMPage() {
                             transition={{ delay: 0.22, duration: 0.55 }}
                             className="flex flex-col sm:flex-row gap-3 items-center mb-14"
                         >
-                            <Button
-                                onClick={() => window.open('https://cal.com/realtygenie/30min?overlayCalendar=true', '_blank')}
-                                size="lg"
-                                className="h-12 px-7 text-[15px] font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 transition-all duration-300"
+                            <button
+                                onClick={() => window.open('https://realtycrm.realtygenie.co', '_blank')}
+                                className="relative overflow-hidden group h-12 px-7 rounded-md border-2 border-black bg-amber-400 text-black text-[15px] font-black uppercase tracking-wide shadow-[5px_5px_0_0_#000] hover:bg-amber-300 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[7px_7px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_0_#000] transition-all duration-150 whitespace-nowrap"
                             >
-                                Book a Demo
-                            </Button>
-                            <Button
-                                onClick={() => window.open('https://app.realtygenie.ai', '_blank')}
-                                size="lg"
-                                variant="outline"
-                                className="h-12 px-7 text-[15px] font-semibold rounded-lg border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-white transition-all duration-300 gap-2"
-                            >
-                                Visit Website
-                                <ArrowRight className="w-4 h-4" />
-                            </Button>
+                                <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/60 to-transparent rounded-t-md" />
+                                <motion.span
+                                    aria-hidden
+                                    animate={{ x: ['-180%', '280%'] }}
+                                    transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', repeatDelay: 2.5 }}
+                                    className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/80 to-transparent"
+                                />
+                                <span className="relative inline-flex items-center gap-2">
+                                    Launch RealtyCRM
+                                    <ArrowRight className="w-4 h-4" />
+                                </span>
+                            </button>
                         </motion.div>
 
                         {/* Interactive Dashboard */}
@@ -785,13 +785,22 @@ export default function RealtyGenieCRMPage() {
                                 Join hundreds of agents and teams already using RealtyGenie to close more deals with less effort.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                                <Button
-                                    onClick={() => window.open('https://cal.com/realtygenie/30min?overlayCalendar=true', '_blank')}
-                                    size="lg"
-                                    className="h-12 px-8 text-[15px] font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 transition-all"
+                                <button
+                                    onClick={() => window.open('https://realtycrm.realtygenie.co', '_blank')}
+                                    className="relative overflow-hidden group h-12 px-8 rounded-md border-2 border-black bg-amber-400 text-black text-[15px] font-black uppercase tracking-wide shadow-[5px_5px_0_0_#000] hover:bg-amber-300 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[7px_7px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_0_#000] transition-all duration-150 whitespace-nowrap"
                                 >
-                                    Book a Demo
-                                </Button>
+                                    <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/60 to-transparent rounded-t-md" />
+                                    <motion.span
+                                        aria-hidden
+                                        animate={{ x: ['-180%', '280%'] }}
+                                        transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', repeatDelay: 2.5 }}
+                                        className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/80 to-transparent"
+                                    />
+                                    <span className="relative inline-flex items-center gap-2">
+                                        Launch RealtyCRM
+                                        <ArrowRight className="w-4 h-4" />
+                                    </span>
+                                </button>
                                 <Button
                                     onClick={() => window.open('https://app.realtygenie.ai', '_blank')}
                                     size="lg"

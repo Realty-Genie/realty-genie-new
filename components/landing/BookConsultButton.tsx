@@ -31,48 +31,24 @@ export const BookConsultButton: React.FC<BookConsultButtonProps> = ({
     };
 
     return (
-        <motion.button
+        <button
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={handleClick}
-            className={`
-                relative overflow-hidden
-                h-12 px-5 rounded-lg
-                text-white font-medium text-base
-                transition-all duration-300 ease-out
-                cursor-pointer
-                flex items-center justify-center gap-2
-                ${className}
-            `}
+            className={`relative group overflow-hidden h-11 md:h-12 px-5 rounded-md text-white font-bold text-sm md:text-base border-2 border-black transition-colors duration-150 cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap ${className}`}
             style={{
                 background: 'linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%)',
-                boxShadow: `
-                    inset 0 2px 4px rgba(255, 255, 255, 0.25),
-                    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
-                    0 4px 12px rgba(139, 92, 246, 0.35)
-                `,
             }}
-            whileHover={{
-                scale: 1.02,
-                boxShadow: `
-                    inset 0 2px 4px rgba(255, 255, 255, 0.3),
-                    inset 0 -2px 4px rgba(0, 0, 0, 0.2),
-                    0 6px 20px rgba(139, 92, 246, 0.45)
-                `,
-            }}
-            whileTap={{ scale: 0.98 }}
         >
-            <motion.span
-                className="flex items-center gap-2 whitespace-nowrap"
-            >
+            {/* Top gloss highlight */}
+            <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/40 to-transparent rounded-t-md" />
+
+            <span className="relative flex items-center gap-2">
                 Book A Consult
-                <motion.span
-                    animate={{ x: isHovered ? 4 : 0 }}
-                    transition={{ duration: 0.2 }}
-                >
+                <motion.span animate={{ x: isHovered ? 4 : 0 }} transition={{ duration: 0.2 }}>
                     <ArrowRight className="w-4 h-4" />
                 </motion.span>
-            </motion.span>
-        </motion.button>
+            </span>
+        </button>
     );
 };
