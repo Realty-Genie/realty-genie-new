@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { BookConsultButton } from './BookConsultButton';
+import { TryCallgenieButton } from './TryCallgenieButton';
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,7 +27,7 @@ export const Navbar = () => {
             name: 'Solutions',
             href: '#',
             dropdown: [
-                { name: 'RealtyCRM - All in one!!', href: '/solutions/realty-crm', highlighted: true },
+                { name: 'RealtyCRM — All in one', href: '/solutions/realty-crm', highlighted: true },
                 { name: 'IDX Website & SEO', href: '/solutions/idx-website' },
                 { name: 'AI Calling Assistant', href: '/solutions/calling-assistant' },
                 { name: 'AI Lead Management', href: '/solutions/lead-management' },
@@ -58,7 +59,7 @@ export const Navbar = () => {
                     <span className="text-xl md:text-2xl font-bold tracking-tight text-primary font-outfit">RealtyGenie</span>
                 </Link>
 
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-6 lg:gap-8">
                     {navLinks.map((link) => (
                         <div
                             key={link.name}
@@ -95,9 +96,10 @@ export const Navbar = () => {
                                                 >
                                                     {item.highlighted && (
                                                         <motion.span
+                                                            aria-hidden
                                                             animate={{ x: ['-150%', '300%'] }}
-                                                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 3 }}
-                                                            className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-20 pointer-events-none"
+                                                            transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', repeatDelay: 3 }}
+                                                            className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-12 pointer-events-none"
                                                         />
                                                     )}
                                                     <span className="relative">{item.name}</span>
@@ -110,7 +112,10 @@ export const Navbar = () => {
                         </div>
                     ))}
 
-                    <BookConsultButton />
+                    <div className="flex items-center gap-2 pl-2">
+                        <BookConsultButton />
+                        <TryCallgenieButton size="sm" />
+                    </div>
                 </div>
 
                 {/* Mobile: Book Consult + Hamburger */}
@@ -168,7 +173,7 @@ export const Navbar = () => {
                                                                 <Link
                                                                     key={item.name}
                                                                     href={item.href}
-                                                                    className={`relative overflow-hidden text-base py-3 font-medium transition-all rounded-lg px-3 ${
+                                                                    className={`relative overflow-hidden text-base py-3 font-medium transition-all rounded-lg px-3 block ${
                                                                         item.highlighted
                                                                             ? 'bg-gradient-to-br from-amber-400 via-yellow-400 to-orange-400 text-amber-950 font-bold mt-2 shadow-[0_4px_15px_-3px_rgba(251,191,36,0.5)] border border-yellow-300/60'
                                                                             : 'text-slate-600 hover:text-blue-600'
@@ -177,9 +182,10 @@ export const Navbar = () => {
                                                                 >
                                                                     {item.highlighted && (
                                                                         <motion.span
+                                                                            aria-hidden
                                                                             animate={{ x: ['-150%', '300%'] }}
-                                                                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 3 }}
-                                                                            className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-20 pointer-events-none"
+                                                                            transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', repeatDelay: 3 }}
+                                                                            className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-12 pointer-events-none"
                                                                         />
                                                                     )}
                                                                     <span className="relative">{item.name}</span>
@@ -208,6 +214,7 @@ export const Navbar = () => {
                                             window.open("https://cal.com/realtygenie/30min?overlayCalendar=true", "_blank");
                                         }}
                                     />
+                                    <TryCallgenieButton className="w-full" />
                                 </div>
                             </div>
                         </motion.div>

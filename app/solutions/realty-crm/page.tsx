@@ -309,7 +309,6 @@ export default function RealtyGenieCRMPage() {
                     <div className="absolute bottom-0 left-0 w-[30%] h-[40%] bg-blue-500/5 blur-[100px] rounded-full pointer-events-none" />
 
                     <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
-                        {/* Badge */}
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -319,7 +318,6 @@ export default function RealtyGenieCRMPage() {
                             All-in-One AI Real Estate CRM
                         </motion.div>
 
-                        {/* H1 */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -336,7 +334,6 @@ export default function RealtyGenieCRMPage() {
                             leads — automatically.
                         </motion.h1>
 
-                        {/* H2 */}
                         <motion.p
                             initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -355,19 +352,16 @@ export default function RealtyGenieCRMPage() {
                         >
                             <button
                                 onClick={() => window.open('https://realtycrm.realtygenie.co', '_blank')}
-                                className="relative overflow-hidden group h-12 px-7 rounded-md border-2 border-black bg-amber-400 text-black text-[15px] font-black uppercase tracking-wide shadow-[5px_5px_0_0_#000] hover:bg-amber-300 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[7px_7px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_0_#000] transition-all duration-150 whitespace-nowrap"
+                                className="relative group overflow-hidden h-12 px-7 rounded-lg border border-amber-300/70 bg-gradient-to-br from-amber-400 via-yellow-400 to-orange-400 text-amber-950 text-[15px] font-semibold tracking-tight shadow-[0_4px_18px_-4px_rgba(251,191,36,0.55)] hover:from-amber-300 hover:to-orange-300 hover:shadow-[0_10px_28px_-6px_rgba(251,191,36,0.7)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 whitespace-nowrap inline-flex items-center justify-center"
                             >
-                                <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/60 to-transparent rounded-t-md" />
+                                <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/50 to-transparent" />
                                 <motion.span
                                     aria-hidden
                                     animate={{ x: ['-180%', '280%'] }}
                                     transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', repeatDelay: 2.5 }}
-                                    className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/80 to-transparent"
+                                    className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/60 to-transparent"
                                 />
-                                <span className="relative inline-flex items-center gap-2">
-                                    Launch RealtyCRM
-                                    <ArrowRight className="w-4 h-4" />
-                                </span>
+                                <span className="relative">Launch RealtyCRM</span>
                             </button>
                         </motion.div>
 
@@ -787,28 +781,24 @@ export default function RealtyGenieCRMPage() {
                             <div className="flex flex-col sm:flex-row gap-3 justify-center">
                                 <button
                                     onClick={() => window.open('https://realtycrm.realtygenie.co', '_blank')}
-                                    className="relative overflow-hidden group h-12 px-8 rounded-md border-2 border-black bg-amber-400 text-black text-[15px] font-black uppercase tracking-wide shadow-[5px_5px_0_0_#000] hover:bg-amber-300 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[7px_7px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_0_#000] transition-all duration-150 whitespace-nowrap"
+                                    className="relative group overflow-hidden h-12 px-8 rounded-lg border border-amber-300/70 bg-gradient-to-br from-amber-400 via-yellow-400 to-orange-400 text-amber-950 text-[15px] font-semibold tracking-tight shadow-[0_4px_18px_-4px_rgba(251,191,36,0.55)] hover:from-amber-300 hover:to-orange-300 hover:shadow-[0_10px_28px_-6px_rgba(251,191,36,0.7)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 whitespace-nowrap inline-flex items-center justify-center"
                                 >
-                                    <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/60 to-transparent rounded-t-md" />
+                                    <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/50 to-transparent" />
                                     <motion.span
                                         aria-hidden
                                         animate={{ x: ['-180%', '280%'] }}
                                         transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', repeatDelay: 2.5 }}
-                                        className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/80 to-transparent"
+                                        className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/60 to-transparent"
                                     />
-                                    <span className="relative inline-flex items-center gap-2">
-                                        Launch RealtyCRM
-                                        <ArrowRight className="w-4 h-4" />
-                                    </span>
+                                    <span className="relative">Launch RealtyCRM</span>
                                 </button>
                                 <Button
                                     onClick={() => window.open('https://app.realtygenie.ai', '_blank')}
                                     size="lg"
                                     variant="outline"
-                                    className="h-12 px-8 text-[15px] font-semibold rounded-lg border-slate-200 text-slate-700 hover:border-slate-300 gap-2 transition-all"
+                                    className="h-12 px-8 text-[15px] font-semibold rounded-lg border-slate-200 text-slate-700 hover:border-slate-300 transition-all"
                                 >
                                     Visit Website
-                                    <ArrowRight className="w-4 h-4" />
                                 </Button>
                             </div>
                         </motion.div>
