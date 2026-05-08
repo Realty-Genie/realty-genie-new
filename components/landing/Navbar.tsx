@@ -53,10 +53,10 @@ export const Navbar = () => {
                 : 'bg-white/50 backdrop-blur-sm py-4'
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-4 md:px-8 h-12 md:h-14 flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-2 group">
-                    <img src="/logo.png" alt="RealtyGenie" className="h-8 md:h-10 w-auto" />
-                    <span className="text-xl md:text-2xl font-bold tracking-tight text-primary font-outfit">RealtyGenie</span>
+            <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 h-12 md:h-14 flex items-center justify-between gap-2">
+                <Link href="/" className="flex items-center gap-1.5 sm:gap-2 group min-w-0 flex-shrink">
+                    <img src="/logo.png" alt="RealtyGenie" className="h-7 sm:h-8 md:h-10 w-auto flex-shrink-0" />
+                    <span className="text-base sm:text-xl md:text-2xl font-bold tracking-tight text-primary font-outfit truncate">RealtyGenie</span>
                 </Link>
 
                 <div className="hidden md:flex items-center gap-6 lg:gap-8">
@@ -119,10 +119,10 @@ export const Navbar = () => {
                 </div>
 
                 {/* Mobile: Book Consult + Hamburger */}
-                <div className="md:hidden flex items-center gap-1.5">
-                    <BookConsultButton />
+                <div className="md:hidden flex items-center gap-1 sm:gap-1.5 flex-shrink-0">
+                    <BookConsultButton className="!h-9 !px-3 !text-xs sm:!text-sm sm:!px-4" />
                     <button
-                        className="p-2 text-slate-900 focus:outline-none"
+                        className="p-1.5 sm:p-2 text-slate-900 focus:outline-none flex-shrink-0"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle menu"
                     >

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ReactMarkdown from 'react-markdown';
+import { setActiveFloating, useActiveFloating } from "@/lib/floatingStore";
 
 export enum MessageType {
   Sender = "sender",
@@ -15,7 +16,10 @@ type Message = {
   content: string
 }
 const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const active = useActiveFloating();
+  const isOpen = active === "chatbot";
+  const hidden = active === "whatsapp";
+  const setIsOpen = (next: boolean) => setActiveFloating(next ? "chatbot" : null);
   const [input, setInput] = useState("");
   const [messages, setMessage] = useState<Array<Message>>([{
     type: MessageType.Receiver,
@@ -203,46 +207,53 @@ const Chatbot = () => {
       </AnimatePresence>
 
       {/* FAB */}
-      <motion.button
-        layout
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setIsOpen(!isOpen)}
-        className={cn(
-          "w-16 h-16 rounded-full flex items-center justify-center shadow-xl transition-all duration-500 pointer-events-auto relative",
-          isOpen
-            ? "bg-card text-foreground border border-border"
-            : "bg-primary text-primary-foreground"
+      <AnimatePresence>
+        {!hidden && (
+          <motion.button
+            key="cb-fab"
+            layout
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close chat" : "Open chat"}
+            className={cn(
+              "w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shadow-xl transition-all duration-500 pointer-events-auto relative",
+              isOpen
+                ? "bg-card text-foreground border border-border"
+                : "bg-primary text-primary-foreground"
+            )}
+          >
+            <AnimatePresence mode="wait">
+              {isOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X size={28} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="chat"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative"
+                >
+                  <MessageCircle size={28} />
+                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-2 border-primary rounded-full" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
         )}
-      >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <X size={28} />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="chat"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="relative"
-            >
-              <MessageCircle size={28} />
-              <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-2 border-primary rounded-full" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.button>
+      </AnimatePresence>
     </div>
   );
 };
